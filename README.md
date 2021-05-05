@@ -21,7 +21,7 @@ Telegram Bot to store Posts and Documents and it can Access by Special Links
 ```
 start -start the bot or get posts
 
--/Batch -create link for more than one posts
+Batch -create link for more than one posts
 
 ```
 
