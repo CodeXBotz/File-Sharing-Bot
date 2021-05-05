@@ -1,7 +1,7 @@
 import pyromod.listen
 from pyrogram import Client
 
-from config import API_HASH, APP_ID, LOGGER, TG_BOT_TOKEN, TG_BOT_WORKERS, OWNER_ID
+from config import API_HASH, APP_ID, LOGGER, TG_BOT_TOKEN, TG_BOT_WORKERS
 
 class Bot(Client):
     def __init__(self):
@@ -20,10 +20,8 @@ class Bot(Client):
     async def start(self):
         await super().start()
         usr_bot_me = await self.get_me()
-        owner = await self.get_users(OWNER_ID)
         self.set_parse_mode("html")
         self.LOGGER(__name__).info(f"Bot Running..!\n\nCreated by 𝘾𝙤𝙙𝙚 𝕏 𝘽𝙤𝙩𝙯\nhttps://t.me/CodeXBotz")
-        self.owner = owner
         self.username = usr_bot_me.username
 
     async def stop(self, *args):
