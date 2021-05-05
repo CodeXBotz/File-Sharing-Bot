@@ -8,13 +8,13 @@
   </a>
   
   <a href="https://github.com/CodeXBotz/File-Sharing-Bot/fork">
-    <img src="https://img.shields.io/github/forks/AlbertEinsteinTG/Adv-Auto-Filter-Bot-V2?label=Fork&style=social">
+    <img src="https://img.shields.io/github/forks/CodeXBotz/File-Sharing-Bot?label=Fork&style=social">
 
   </a>  
 </p>
 
+Telegram Bot to store Posts and Documents and it can Access by Special Links
 
-description.....
 
 #### Features
 
