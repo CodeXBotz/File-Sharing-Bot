@@ -12,7 +12,8 @@
 Telegram Bot to store Posts and Documents and it can Access by Special Links
 
 ##
-**If you need any more modes in repo or If you find out any bugs, mention in @codexbotzsupport**
+
+**If you need any more modes in repo or If you find out any bugs, mention in @[codexbotzsupport ](https://www.telegram.dog/codexbotzsupport)**
 
 #### Features
 
