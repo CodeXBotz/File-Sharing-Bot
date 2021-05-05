@@ -33,7 +33,7 @@ Batch -create link for more than one posts
 * `OWNER_ID` Must enter Your Telegram Id
 * `CHANNEL_ID` Your Channel ID eg:- -100xxxxxxxx
 * `ADMINS` A space separated list of user_ids of Admins, they can only create links
-* `START_MSG` Optional: start message of bot, use HTML parsemode format
+* `START_MESSAGE ` Optional: start message of bot, use HTML parsemode format
 
 
 ## Support   
