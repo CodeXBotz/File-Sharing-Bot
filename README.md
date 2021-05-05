@@ -14,13 +14,15 @@ Telegram Bot to store Posts and Documents and it can Access by Special Links
 - Can be deployed on heroku directly 
 
 ### Deploy on Heroku
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/CodeXBotz/File-Sharing-Bot)
 
-### Bot Commands
+### Admin Commands
 
--/start
+-/start -start the bot or get posts
 
--/batch -
+-/Batch -create link for more than one posts
+
+
 
 ### Variables
 
