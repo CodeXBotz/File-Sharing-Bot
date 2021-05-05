@@ -71,7 +71,8 @@ async def start_command(client: Client, message: Message):
         await message.reply_text(
             text = START_MSG.format(firstname = message.from_user.first_name),
             reply_markup = reply_markup,
-            disable_web_page_preview = True
+            disable_web_page_preview = True,
+            quote = True
         )
         return
 
@@ -94,6 +95,10 @@ async def cb_handler(client: Bot, query: CallbackQuery):
         )
     elif data == "close":
         await query.message.delete()
+        try:
+            await query.message.reply_to_message.delete()
+        except:
+            pass
 
 
 @Bot.on_message(filters.private & filters.user(ADMINS) & ~filters.command(['start','batch']))
@@ -120,7 +125,7 @@ async def channel_post(client: Client, message: Message):
 async def batch(client: Client, message: Message):
     while True:
         try:
-            first_message = await client.ask(text = "Forward the First Message..", chat_id = message.from_user.id, filters=filters.forwarded, timeout=30)
+            first_message = await client.ask(text = "Forward the First Message from the DB Channel (with Quotes)..", chat_id = message.from_user.id, filters=filters.forwarded, timeout=30)
         except:
             return
         if first_message.forward_from_chat:
@@ -131,7 +136,7 @@ async def batch(client: Client, message: Message):
         continue
     while True:
         try:
-            second_message = await client.ask(text = "Forward the Last Message..", chat_id = message.from_user.id, filters=filters.forwarded, timeout=30)
+            second_message = await client.ask(text = "Forward the Last Message from DB Channel (with Quotes)..", chat_id = message.from_user.id, filters=filters.forwarded, timeout=30)
         except:
             return
         if second_message.forward_from_chat:
