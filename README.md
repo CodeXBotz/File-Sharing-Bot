@@ -14,7 +14,7 @@ Telegram Bot to store Posts and Documents and it can Access by Special Links
 - Can be deployed on heroku directly 
 
 ### Deploy on Heroku
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/CodeXBotz/File-Sharing-Bot)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
 ### Bot Commands
 
