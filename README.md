@@ -1,11 +1,18 @@
 #### File-sharing-Bot
 
+<p align="center">
+  <a href="https://www.python.org">
+    <img src="http://ForTheBadge.com/images/badges/made-with-python.svg">
 
+  </a>
+</p>
 
 
 
 Telegram Bot to store Posts and Documents and it can Access by Special Links
 
+##
+**If you need any more modes in repo or If you find out any bugs, mention in @codexbotzsupport**
 
 #### Features
 
