@@ -8,6 +8,7 @@
     "sharing"
   ],
   "repository": "https://github.com/CodeXBotz/File-Sharing-Bot",
+  "logo": "https://telegra.ph/file/14d3013fda21281c54b61.jpg",
   "env": {
     "TG_BOT_TOKEN": {
       "description": "Your Bot token, Get it from @Botfather",
@@ -31,7 +32,7 @@
     },
     "START_MESSAGE": {
       "description": "Optional: start message of bot, use HTML parsemode format",
-      "value": "",
+      "value": "Hello {firstname}\n\nI can store private files in Specified Channel and other users can acess it from special link.",
       "required": false
     },
     "ADMINS": {
