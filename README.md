@@ -6,7 +6,17 @@
 
   </a>
 </p>
+<p align="center">
+  <a href="https://github.com/CodeXBotz/File-Sharing-Bot/stargazers">
+    <img src="https://img.shields.io/github/stars/CodeXBotz/File-Sharing-Bot?style=flat-square">
 
+  </a>
+  
+  <a href="https://github.com/CodeXBotz/File-Sharing-Bot/fork">
+    <img src="https://img.shields.io/github/forks/CodeXBotz/File-Sharing-Bot?label=Fork&style=flat-square">
+
+  </a>  
+</p>
 
 
 Telegram Bot to store Posts and Documents and it can Access by Special Links.
