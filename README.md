@@ -36,16 +36,28 @@ I Guess This Will Be Usefull For Many People.....😇.
 
 - Add the bot to channels with admin permission, and thats it!
 
+##
+### Installation
 
-### Deploy on Heroku
+#### Deploy on Heroku
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/CodeXBotz/File-Sharing-Bot)
+
+#### Deploy in your VPS
+```
+git clone https://github.com/CodeXBotz/File-Sharing-Bot
+cd File-Sharing-Bot
+pip3 install -r requirements.txt
+# <Create config.py appropriately>
+python3 main.py
+```
+##
 
 ### Admin Commands
 
 ```
 start -start the bot or get posts
 
-Batch -create link for more than one posts
+batch -create link for more than one posts
 
 ```
 
