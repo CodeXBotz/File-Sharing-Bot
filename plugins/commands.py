@@ -53,6 +53,7 @@ async def start_command(client: Client, message: Message):
         for msg in msgs:
             try:
                 await msg.copy(chat_id=message.from_user.id)
+                await asyncio.sleep(0.5)
             except FloodWait as e:
                 await asyncio.sleep(e.x)
                 await msg.copy(chat_id=message.from_user.id)
