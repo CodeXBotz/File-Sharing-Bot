@@ -88,7 +88,7 @@ Report Bugs, Give Feature Requests There..
 ### Credits
 
 - Thanks To Dan For His Awsome [Libary](https://github.com/pyrogram/pyrogram)
-
+- [codeXbotz™️](t.me/codexbotz)
 ### Licence
 [![GNU GPLv3 Image](https://www.gnu.org/graphics/gplv3-127x51.png)](http://www.gnu.org/licenses/gpl-3.0.en.html)  
 
