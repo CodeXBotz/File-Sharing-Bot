@@ -1,3 +1,5 @@
+#(©)Codexbotz
+
 import asyncio
 import base64
 from pyrogram import Client, filters, __version__
