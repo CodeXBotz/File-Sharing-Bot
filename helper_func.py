@@ -1,7 +1,9 @@
 import base64
+import asyncio
 from pyrogram import filters
-from config import FORCE_SUB_CHANNEL, ADMINS
+from config import FORCE_SUB_CHANNEL, ADMINS, CHANNEL_ID
 from pyrogram.errors.exceptions.bad_request_400 import UserNotParticipant
+from pyrogram.errors import FloodWait
 
 async def is_subscribed(filter, client, message):
     if not FORCE_SUB_CHANNEL:
@@ -30,5 +32,27 @@ async def decode(base64_string):
     string_bytes = base64.b64decode(base64_bytes) 
     string = string_bytes.decode("ascii")
     return string
+
+async def get_messages(client, message_ids):
+    messages = []
+    total_messages = 0
+    while total_messages != len(message_ids):
+        temb_ids = message_ids[total_messages:total_messages+200]
+        try:
+            msgs = await client.get_messages(
+                chat_id=CHANNEL_ID,
+                message_ids=temb_ids
+            )
+        except FloodWait as e:
+            await asyncio.sleep(e.x)
+            msgs = await client.get_messages(
+                chat_id=CHANNEL_ID,
+                message_ids=temb_ids
+            )
+        except:
+            pass
+        total_messages += len(temb_ids)
+        messages.extend(msgs)
+    return messages
 
 subscribed = filters.create(is_subscribed)
