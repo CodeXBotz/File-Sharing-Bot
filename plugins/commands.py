@@ -75,24 +75,6 @@ async def start_command(client: Client, message: Message):
         )
         return
 
-@Bot.on_message(filters.private & filters.user(ADMINS) & ~filters.command(['start','batch']))
-async def channel_post(client: Client, message: Message):
-    reply_text = await message.reply_text("Please Wait...!", quote = True)
-    try:
-        post_message = await message.copy(chat_id = CHANNEL_ID, disable_notification=True)
-    except FloodWait as e:
-        await asyncio.sleep(e.x)
-        post_message = await message.copy(chat_id = CHANNEL_ID, disable_notification=True)
-    except:
-        await reply_text.edit_text("Something went Wrong..!")
-        return
-    converted_id = post_message.message_id * abs(CHANNEL_ID)
-    string = f"get-{converted_id}"
-    base64_string = await encode(string)
-    link = f"https://t.me/{client.username}?start={base64_string}"
-    reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("🔁 Share URL", url=f'https://telegram.me/share/url?url={link}')]])
-    await reply_text.edit(f"<b>Here is your link</b>\n\n{link}", reply_markup=reply_markup, disable_web_page_preview = True)
-
 @Bot.on_message(filters.command('start') & filters.private)
 async def not_joined(client: Client, message: Message):
     text = "<b>You need to join in my Channel/Group to use me\n\nKindly Please join Channel</b>"
