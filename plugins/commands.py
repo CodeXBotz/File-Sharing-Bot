@@ -1,7 +1,6 @@
 #(©)Codexbotz
 
 import asyncio
-import base64
 from pyrogram import Client, filters, __version__
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
 from pyrogram.errors import FloodWait
@@ -22,8 +21,8 @@ async def start_command(client: Client, message: Message):
         argument = string.split("-")
         if len(argument) == 3:
             try:
-                start = int(argument[1])
-                end = int(argument[2])
+                start = int(int(argument[1]) / abs(CHANNEL_ID))
+                end = int(int(argument[2]) / abs(CHANNEL_ID))
             except:
                 return
             if start <= end:
@@ -112,7 +111,8 @@ async def channel_post(client: Client, message: Message):
     except:
         await reply_text.edit_text("Something went Wrong..!")
         return
-    string = f"get-{post_message.message_id}"
+    converted_id = post_message.message_id * abs(CHANNEL_ID)
+    string = f"get-{converted_id}"
     base64_string = await encode(string)
     link = f"https://t.me/{client.username}?start={base64_string}"
     reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("🔁 Share URL", url=f'https://telegram.me/share/url?url={link}')]])
@@ -143,7 +143,7 @@ async def batch(client: Client, message: Message):
                 break
         await second_message.reply_text("Forward from the Assigned Channel only...", quote = True)
         continue
-    string = f"get-{f_msg_id}-{s_msg_id}"
+    string = f"get-{f_msg_id * abs(CHANNEL_ID)}-{s_msg_id * abs(CHANNEL_ID)}"
     base64_string = await encode(string)
     link = f"https://t.me/{client.username}?start={base64_string}"
     reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("🔁 Share URL", url=f'https://telegram.me/share/url?url={link}')]])
