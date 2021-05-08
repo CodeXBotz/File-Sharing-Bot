@@ -8,10 +8,9 @@ from pyrogram.errors import FloodWait
 
 from bot import Bot
 from config import CHANNEL_ID, ADMINS, START_MSG, OWNER_ID
+from helper_func import subscribed
 
-
-
-@Bot.on_message(filters.command('start') & filters.private)
+@Bot.on_message(filters.command('start') & filters.private & subscribed)
 async def start_command(client: Client, message: Message):
     text = message.text
     if len(text)>7:
@@ -155,3 +154,20 @@ async def batch(client: Client, message: Message):
     link = f"https://t.me/{client.username}?start={base64_string}"
     reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("🔁 Share URL", url=f'https://telegram.me/share/url?url={link}')]])
     await second_message.reply_text(f"<b>Here is your link</b>\n\n{link}", quote=True, reply_markup=reply_markup)
+
+@Bot.on_message(filters.command('start') & filters.private)
+async def not_joined(client: Client, message: Message):
+    text = "<b>You need to join in my Channel/Group to use me\n\nKindly Please join Channel</b>"
+    message_text = message.text
+    try:
+        command, argument = message_text.split()
+        text = text + f" <b>and <a href='https://t.me/{client.username}?start={argument}'>try again</a></b>"
+    except ValueError:
+        pass
+    reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("Join Channel", url = client.invitelink)]])
+    await message.reply(
+        text = text,
+        reply_markup = reply_markup,
+        quote = True,
+        disable_web_page_preview = True
+    )
