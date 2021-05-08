@@ -8,7 +8,7 @@ from pyrogram.errors import FloodWait
 
 from bot import Bot
 from config import CHANNEL_ID, ADMINS, START_MSG, OWNER_ID
-from helper_func import subscribed
+from helper_func import subscribed, encode, decode
 
 @Bot.on_message(filters.command('start') & filters.private & subscribed)
 async def start_command(client: Client, message: Message):
@@ -18,9 +18,7 @@ async def start_command(client: Client, message: Message):
             base64_string = text.split(" ", 1)[1]
         except:
             return
-        base64_bytes = base64_string.encode("ascii")
-        string_bytes = base64.b64decode(base64_bytes) 
-        string = string_bytes.decode("ascii") 
+        string = await decode(base64_string)
         argument = string.split("-")
         if len(argument) == 3:
             try:
@@ -115,9 +113,7 @@ async def channel_post(client: Client, message: Message):
         await reply_text.edit_text("Something went Wrong..!")
         return
     string = f"get-{post_message.message_id}"
-    string_bytes = string.encode("ascii")
-    base64_bytes = base64.b64encode(string_bytes)
-    base64_string = base64_bytes.decode("ascii")
+    base64_string = await encode(string)
     link = f"https://t.me/{client.username}?start={base64_string}"
     reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("🔁 Share URL", url=f'https://telegram.me/share/url?url={link}')]])
     await reply_text.edit(f"<b>Here is your link</b>\n\n{link}", reply_markup=reply_markup, disable_web_page_preview = True)
@@ -148,9 +144,7 @@ async def batch(client: Client, message: Message):
         await second_message.reply_text("Forward from the Assigned Channel only...", quote = True)
         continue
     string = f"get-{f_msg_id}-{s_msg_id}"
-    string_bytes = string.encode("ascii")
-    base64_bytes = base64.b64encode(string_bytes)
-    base64_string = base64_bytes.decode("ascii")
+    base64_string = await decode(string)
     link = f"https://t.me/{client.username}?start={base64_string}"
     reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("🔁 Share URL", url=f'https://telegram.me/share/url?url={link}')]])
     await second_message.reply_text(f"<b>Here is your link</b>\n\n{link}", quote=True, reply_markup=reply_markup)
