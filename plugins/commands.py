@@ -7,7 +7,7 @@ from pyrogram.errors import FloodWait
 
 from bot import Bot
 from config import CHANNEL_ID, ADMINS, START_MSG, OWNER_ID
-from helper_func import subscribed, encode, decode
+from helper_func import subscribed, encode, decode, get_messages
 
 @Bot.on_message(filters.command('start') & filters.private & subscribed)
 async def start_command(client: Client, message: Message):
@@ -41,14 +41,12 @@ async def start_command(client: Client, message: Message):
             except:
                 return
         try:
-            msgs = await client.get_messages(
-                chat_id=CHANNEL_ID,
-                message_ids=ids
-            )
+            messages = await get_messages(client, ids)
         except:
             await message.reply_text("Something went wrong..!")
             return
-        for msg in msgs:
+        print(len(messages))
+        for msg in messages:
             try:
                 await msg.copy(chat_id=message.from_user.id, reply_markup = None)
                 await asyncio.sleep(0.5)
