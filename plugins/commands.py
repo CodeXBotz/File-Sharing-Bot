@@ -37,7 +37,7 @@ async def start_command(client: Client, message: Message):
                         break
         elif len(argument) == 2:
             try:
-                ids = [int(argument[1])]
+                ids = [int(int(argument[1]) / abs(CHANNEL_ID))]
             except:
                 return
         try:
