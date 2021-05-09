@@ -30,7 +30,7 @@ async def batch(client: Client, message: Message):
             channel_id = matches.group(1)
             f_msg_id = matches.group(2)
             if channel_id.isdigit():
-                if channel_id == client.db_channel.id:
+                if f"-100{channel_id}" == str(client.db_channel.id):
                     break
             else:
                 if channel_id == client.db_channel.username:
@@ -61,7 +61,7 @@ async def batch(client: Client, message: Message):
             channel_id = matches.group(1)
             s_msg_id = matches.group(2)
             if channel_id.isdigit():
-                if channel_id == client.db_channel.id:
+                if f"-100{channel_id}" == str(client.db_channel.id):
                     break
             else:
                 if channel_id == client.db_channel.username:
