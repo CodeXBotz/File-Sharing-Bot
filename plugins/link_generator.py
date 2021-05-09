@@ -9,7 +9,7 @@ from helper_func import encode
 async def batch(client: Client, message: Message):
     while True:
         try:
-            first_message = await client.ask(text = "Forward the First Message from DB Channel (with Quotes)..\nor Send the Post Link", chat_id = message.from_user.id, filters=filters.forwarded, timeout=30)
+            first_message = await client.ask(text = "Forward the First Message from DB Channel (with Quotes)..\nor Send the Post Link", chat_id = message.from_user.id, filters=(filters.forwarded | (filters.text & ~filters.forwarded)), timeout=30)
         except:
             return
         if first_message.forward_from_chat:
@@ -40,7 +40,7 @@ async def batch(client: Client, message: Message):
 
     while True:
         try:
-            second_message = await client.ask(text = "Forward the Last Message from DB Channel (with Quotes)..\nor Send the Post Link", chat_id = message.from_user.id, filters=filters.forwarded, timeout=30)
+            second_message = await client.ask(text = "Forward the Last Message from DB Channel (with Quotes)..\nor Send the Post Link", chat_id = message.from_user.id, filters=(filters.forwarded | (filters.text & ~filters.forwarded)), timeout=30)
         except:
             return
         if second_message.forward_from_chat:
