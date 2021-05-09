@@ -54,7 +54,7 @@ async def batch(client: Client, message: Message):
             continue
         elif second_message.text:
             pattern = "https://t.me/(?:c/)?(.*)/(\d+)"
-            matches = re.match(pattern,text)
+            matches = re.match(pattern,second_message.text)
             if not matches:
                 await second_message.reply("This is not a Proper telegram post link", quote=True)
                 continue
