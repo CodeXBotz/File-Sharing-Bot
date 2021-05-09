@@ -38,7 +38,8 @@ I Guess This Will Be Usefull For Many People.....😇.
 
 ### Setup
 
-- Add the bot to channels with admin permission, and thats it!
+- Add the bot to Database Channel with all permission
+- Add bot to ForceSub channel as Admin with Invite Users via Link Permission if you enabled ForceSub 
 
 ##
 ### Installation
@@ -51,7 +52,7 @@ I Guess This Will Be Usefull For Many People.....😇.
 **Thanks to [Erich](https://t.me/ErichDaniken) and his [InFoTel](https://t.me/InFoTel_Group) for this Video**
 
 #### Deploy in your VPS
-```
+```bash
 git clone https://github.com/CodeXBotz/File-Sharing-Bot
 cd File-Sharing-Bot
 pip3 install -r requirements.txt
@@ -63,9 +64,11 @@ python3 main.py
 ### Admin Commands
 
 ```
-start -start the bot or get posts
+/start - start the bot or get posts
 
-batch -create link for more than one posts
+/batch - create link for more than one posts
+
+/genlink - create link for one post
 
 ```
 
@@ -76,9 +79,9 @@ batch -create link for more than one posts
 * `TG_BOT_TOKEN` Your bot token from @BotFather
 * `OWNER_ID` Must enter Your Telegram Id
 * `CHANNEL_ID` Your Channel ID eg:- -100xxxxxxxx
-* `ADMINS` A space separated list of user_ids of Admins, they can only create links
-* `START_MESSAGE ` Optional: start message of bot, use HTML parsemode format
-
+* `ADMINS` Optional: A space separated list of user_ids of Admins, they can only create links
+* `START_MESSAGE` Optional: start message of bot, use HTML parsemode format
+* `FORCE_SUB_CHANNEL` Optional: ForceSub Channel ID, leave 0 if you want disable force sub
 
 ## Support   
 Join Our [Telegram Group](https://www.telegram.dog/codexbotzsupport) For Support/Assistance And Our [Channel](https://www.telegram.dog/codexbotz) For Updates.   
@@ -88,7 +91,8 @@ Report Bugs, Give Feature Requests There..
 ### Credits
 
 - Thanks To Dan For His Awsome [Libary](https://github.com/pyrogram/pyrogram)
-- [codeXbotz™️](t.me/codexbotz)
+- Our Support Group Members
+
 ### Licence
 [![GNU GPLv3 Image](https://www.gnu.org/graphics/gplv3-127x51.png)](http://www.gnu.org/licenses/gpl-3.0.en.html)  
 

@@ -27,8 +27,12 @@
       "value": ""
     },
     "CHANNEL_ID":{
-      "description": "make a channel, then make the bot as admin in channel, and it's id",
+      "description": "make a channel (database channel), then make the bot as admin in channel, and it's id",
       "value": "-100"
+    },
+    "FORCE_SUB_CHANNEL":{
+      "description": "id of the channel or group, if you want enable force sub feature else put 0",
+      "value": "0"
     },
     "START_MESSAGE": {
       "description": "Optional: start message of bot, use HTML parsemode format",
