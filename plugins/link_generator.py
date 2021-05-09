@@ -1,41 +1,21 @@
-import re
 from pyrogram import Client, filters
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 from bot import Bot
 from config import ADMINS
-from helper_func import encode
+from helper_func import encode, get_message_id
 
 @Bot.on_message(filters.private & filters.user(ADMINS) & filters.command('batch'))
 async def batch(client: Client, message: Message):
     while True:
         try:
-            first_message = await client.ask(text = "Forward the First Message from DB Channel (with Quotes)..\nor Send the Post Link", chat_id = message.from_user.id, filters=(filters.forwarded | (filters.text & ~filters.forwarded)), timeout=30)
+            first_message = await client.ask(text = "Forward the First Message from DB Channel (with Quotes)..\n\nor Send the Post Link", chat_id = message.from_user.id, filters=(filters.forwarded | (filters.text & ~filters.forwarded)), timeout=30)
         except:
             return
-        if first_message.forward_from_chat:
-            if first_message.forward_from_chat.id == client.db_channel.id:
-                s_msg_id = first_message.forward_from_message_id
-                break
-            await first_message.reply_text("Forward from the Assigned Channel only...", quote = True)
-            continue
-        elif first_message.forward_sender_name:
-            await second_message.reply_text("Forward from the Assigned Channel only...", quote = True)
-            continue
-        elif first_message.text:
-            pattern = "https://t.me/(?:c/)?(.*)/(\d+)"
-            matches = re.match(pattern,first_message.text)
-            if not matches:
-                await first_message.reply("This is not a Proper telegram post link", quote=True)
-                continue
-            channel_id = matches.group(1)
-            f_msg_id = int(matches.group(2))
-            if channel_id.isdigit():
-                if f"-100{channel_id}" == str(client.db_channel.id):
-                    break
-            else:
-                if channel_id == client.db_channel.username:
-                    break
-            await first_message.reply("Send the link of post from the db channel only", quote=True)
+        f_msg_id = await get_message_id(client, first_message)
+        if f_msg_id:
+            break
+        else:
+            await f_msg_id.reply("<b>❌ Error\n\nthis Forwarded Post is not from my DB Channel or this Link is taken from DB Channel</b>" quote = True)
             continue
 
     while True:
@@ -43,30 +23,11 @@ async def batch(client: Client, message: Message):
             second_message = await client.ask(text = "Forward the Last Message from DB Channel (with Quotes)..\nor Send the Post Link", chat_id = message.from_user.id, filters=(filters.forwarded | (filters.text & ~filters.forwarded)), timeout=30)
         except:
             return
-        if second_message.forward_from_chat:
-            if second_message.forward_from_chat.id == client.db_channel.id:
-                s_msg_id = second_message.forward_from_message_id
-                break
-            await second_message.reply_text("Forward from the Assigned Channel only...", quote = True)
-            continue
-        elif second_message.forward_sender_name:
-            await second_message.reply_text("Forward from the Assigned Channel only...", quote = True)
-            continue
-        elif second_message.text:
-            pattern = "https://t.me/(?:c/)?(.*)/(\d+)"
-            matches = re.match(pattern,second_message.text)
-            if not matches:
-                await second_message.reply("This is not a Proper telegram post link", quote=True)
-                continue
-            channel_id = matches.group(1)
-            s_msg_id = int(matches.group(2))
-            if channel_id.isdigit():
-                if f"-100{channel_id}" == str(client.db_channel.id):
-                    break
-            else:
-                if channel_id == client.db_channel.username:
-                    break
-            await second_message.reply("Send the link of post from the db channel only", quote=True)
+        s_msg_id = await get_message_id(client, second_message)
+        if s_msg_id:
+            break
+        else:
+            await second_message.reply("<b>❌ Error\n\nthis Forwarded Post is not from my DB Channel or this Link is taken from DB Channel</b>" quote = True)
             continue
 
 
@@ -84,12 +45,12 @@ async def link_generator(client: Client, message: Message):
             channel_message = await client.ask(text = "Forward Message from the DB Channel (with Quotes)..", chat_id = message.from_user.id, filters=filters.forwarded, timeout=30)
         except:
             return
-        if channel_message.forward_from_chat:
-            if channel_message.forward_from_chat.id == client.db_channel.id:
-                msg_id = channel_message.forward_from_message_id
-                break
-        await channel_message.reply_text("Forward from the Assigned Channel only...", quote = True)
-        continue
+        msg_id = await get_message_id(client, channel_message)
+        if msg_id:
+            break
+        else:
+            await channel_message.reply("<b>❌ Error\n\nthis Forwarded Post is not from my DB Channel or this Link is taken from DB Channel</b>" quote = True)
+
 
     base64_string = await encode(f"get-{msg_id * abs(client.db_channel.id)}")
     link = f"https://t.me/{client.username}?start={base64_string}"
