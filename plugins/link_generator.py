@@ -61,10 +61,10 @@ async def batch(client: Client, message: Message):
             channel_id = matches.group(1)
             s_msg_id = matches.group(2)
             if channel_id.isdigit():
-                if channel_id == client.db_channel.id
+                if channel_id == client.db_channel.id:
                     break
             else:
-                if channel_id == client.db_channel.username
+                if channel_id == client.db_channel.username:
                     break
             await second_message.reply("Send the link of post from the db channel only", quote=True)
             continue
