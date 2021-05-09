@@ -61,11 +61,11 @@ async def get_message_id(client, message):
             return first_message.forward_from_message_id
         else:
             return 0
-    elif first_message.forward_sender_name:
+    elif message.forward_sender_name:
         return 0
-    elif first_message.text:
+    elif message.text:
         pattern = "https://t.me/(?:c/)?(.*)/(\d+)"
-        matches = re.match(pattern,first_message.text)
+        matches = re.match(pattern,message.text)
         if not matches:
             return 0
         channel_id = matches.group(1)
