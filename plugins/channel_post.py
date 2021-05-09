@@ -28,7 +28,7 @@ async def channel_post(client: Client, message: Message):
     await reply_text.edit(f"<b>Here is your link</b>\n\n{link}", reply_markup=reply_markup, disable_web_page_preview = True)
     await post_message.edit_reply_markup(reply_markup)
 
-@Bot.on_message(filters.channel & filters.incoming & filters.chat(CHANNEL_ID))
+@Bot.on_message(filters.channel & filters.incoming & filters.chat(CHANNEL_ID) & ~filters.edited)
 async def new_post(client: Client, message: Message):
     converted_id = message.message_id * abs(client.db_channel.id)
     string = f"get-{converted_id}"
