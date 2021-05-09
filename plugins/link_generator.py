@@ -28,7 +28,7 @@ async def batch(client: Client, message: Message):
                 await first_message.reply("This is not a Proper telegram post link", quote=True)
                 continue
             channel_id = matches.group(1)
-            f_msg_id = matches.group(2)
+            f_msg_id = int(matches.group(2))
             if channel_id.isdigit():
                 if f"-100{channel_id}" == str(client.db_channel.id):
                     break
@@ -59,7 +59,7 @@ async def batch(client: Client, message: Message):
                 await second_message.reply("This is not a Proper telegram post link", quote=True)
                 continue
             channel_id = matches.group(1)
-            s_msg_id = matches.group(2)
+            s_msg_id = int(matches.group(2))
             if channel_id.isdigit():
                 if f"-100{channel_id}" == str(client.db_channel.id):
                     break
