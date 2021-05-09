@@ -6,7 +6,7 @@ from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram.errors import FloodWait
 
 from bot import Bot
-from config import CHANNEL_ID, ADMINS, START_MSG, OWNER_ID
+from config import client.db_channel.id, ADMINS, START_MSG, OWNER_ID
 from helper_func import subscribed, encode, decode, get_messages
 
 @Bot.on_message(filters.command('start') & filters.private & subscribed)
@@ -21,8 +21,8 @@ async def start_command(client: Client, message: Message):
         argument = string.split("-")
         if len(argument) == 3:
             try:
-                start = int(int(argument[1]) / abs(CHANNEL_ID))
-                end = int(int(argument[2]) / abs(CHANNEL_ID))
+                start = int(int(argument[1]) / abs(client.db_channel.id))
+                end = int(int(argument[2]) / abs(client.db_channel.id))
             except:
                 return
             if start <= end:
@@ -37,7 +37,7 @@ async def start_command(client: Client, message: Message):
                         break
         elif len(argument) == 2:
             try:
-                ids = [int(int(argument[1]) / abs(CHANNEL_ID))]
+                ids = [int(int(argument[1]) / abs(client.db_channel.id))]
             except:
                 return
         temp_msg = await message.reply("Please wait...")
