@@ -40,12 +40,13 @@ async def start_command(client: Client, message: Message):
                 ids = [int(int(argument[1]) / abs(CHANNEL_ID))]
             except:
                 return
+        temp_msg = await message.reply("Please wait...")
         try:
             messages = await get_messages(client, ids)
         except:
             await message.reply_text("Something went wrong..!")
             return
-        print(len(messages))
+        await temp_msg.delete()
         for msg in messages:
             try:
                 await msg.copy(chat_id=message.from_user.id, reply_markup = None)
