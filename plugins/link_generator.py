@@ -28,12 +28,12 @@ async def batch(client: Client, message: Message):
                 await first_message.reply("This is not a Proper telegram post link", quote=True)
                 continue
             channel_id = matches.group(1)
-            s_msg_id = matches.group(2)
+            f_msg_id = matches.group(2)
             if channel_id.isdigit():
-                if channel_id == client.db_channel.id
+                if channel_id == client.db_channel.id:
                     break
             else:
-                if channel_id == client.db_channel.username
+                if channel_id == client.db_channel.username:
                     break
             await first_message.reply("Send the link of post from the db channel only", quote=True)
             continue
