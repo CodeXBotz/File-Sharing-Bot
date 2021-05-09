@@ -1,7 +1,7 @@
 import base64
 import asyncio
 from pyrogram import filters
-from config import FORCE_SUB_CHANNEL, ADMINS, CHANNEL_ID
+from config import FORCE_SUB_CHANNEL, ADMINS
 from pyrogram.errors.exceptions.bad_request_400 import UserNotParticipant
 from pyrogram.errors import FloodWait
 
@@ -40,13 +40,13 @@ async def get_messages(client, message_ids):
         temb_ids = message_ids[total_messages:total_messages+200]
         try:
             msgs = await client.get_messages(
-                chat_id=CHANNEL_ID,
+                chat_id=client.db_channel.id,
                 message_ids=temb_ids
             )
         except FloodWait as e:
             await asyncio.sleep(e.x)
             msgs = await client.get_messages(
-                chat_id=CHANNEL_ID,
+                chat_id=client.db_channel.id,
                 message_ids=temb_ids
             )
         except:
