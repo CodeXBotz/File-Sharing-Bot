@@ -52,13 +52,13 @@ I Guess This Will Be Usefull For Many People.....😇.
 **Thanks to [Erich](https://t.me/ErichDaniken) and his [InFoTel](https://t.me/InFoTel_Group) for this Video**
 
 #### Deploy in your VPS
-```bash
+````bash
 git clone https://github.com/CodeXBotz/File-Sharing-Bot
 cd File-Sharing-Bot
 pip3 install -r requirements.txt
 # <Create config.py appropriately>
 python3 main.py
-```
+````
 ##
 
 ### Admin Commands
