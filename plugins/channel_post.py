@@ -26,18 +26,17 @@ async def channel_post(client: Client, message: Message):
     base64_string = await encode(string)
     link = f"https://t.me/{client.username}?start={base64_string}"
 
-    if DISABLE_CHANNEL_BUTTON:
-        reply_markup = message.reply_markup
-    else:
-        reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("🔁 Share URL", url=f'https://telegram.me/share/url?url={link}')]])
+    reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("🔁 Share URL", url=f'https://telegram.me/share/url?url={link}')]])
 
     await reply_text.edit(f"<b>Here is your link</b>\n\n{link}", reply_markup=reply_markup, disable_web_page_preview = True)
-    await post_message.edit_reply_markup(reply_markup)
+
+    if not DISABLE_CHANNEL_BUTTON:
+        await post_message.edit_reply_markup(reply_markup)
 
 @Bot.on_message(filters.channel & filters.incoming & filters.chat(CHANNEL_ID) & ~filters.edited)
 async def new_post(client: Client, message: Message):
 
-    if not DISABLE_CHANNEL_BUTTON:
+    if DISABLE_CHANNEL_BUTTON:
         return
 
     converted_id = message.message_id * abs(client.db_channel.id)
