@@ -67,7 +67,13 @@ async def start_command(client: Client, message: Message):
             ]
         )
         await message.reply_text(
-            text = START_MSG.format(firstname = message.chat.first_name),
+            text = START_MSG.format(
+                first = message.chat.first_name,
+                last = message.chat.last_name,
+                username = None if not message.chat.username else '@' + message.chat.username,
+                mention = message.from_user.mention,
+                id = message.from_user.id
+            ),
             reply_markup = reply_markup,
             disable_web_page_preview = True,
             quote = True
