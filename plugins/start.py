@@ -51,9 +51,9 @@ async def start_command(client: Client, message: Message):
         for msg in messages:
 
             if bool(CUSTOM_CAPTION) & bool(msg.document):
-                caption = CUSTOM_CAPTION.format(previouscaption = msg.caption, filename = msg.document.file_name)
+                caption = CUSTOM_CAPTION.format(previouscaption = msg.caption.html, filename = msg.document.file_name)
             else:
-                caption = msg.caption
+                caption = msg.caption.html
 
             if DISABLE_CHANNEL_BUTTON:
                 reply_markup = msg.reply_markup
@@ -61,11 +61,11 @@ async def start_command(client: Client, message: Message):
                 reply_markup = None
 
             try:
-                await msg.copy(chat_id=message.from_user.id, caption = caption, reply_markup = reply_markup)
+                await msg.copy(chat_id=message.from_user.id, caption = caption, parse_mode = 'html', reply_markup = reply_markup)
                 await asyncio.sleep(0.5)
             except FloodWait as e:
                 await asyncio.sleep(e.x)
-                await msg.copy(chat_id=message.from_user.id, caption = caption, reply_markup = reply_markup)
+                await msg.copy(chat_id=message.from_user.id, caption = caption, parse_mode = 'html' reply_markup = reply_markup)
             except:
                 pass
         return
