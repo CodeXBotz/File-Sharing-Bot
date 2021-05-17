@@ -1,4 +1,4 @@
-#### File-sharing-Bot
+# File-sharing-Bot
 
 <p align="center">
   <a href="https://www.python.org">
@@ -30,7 +30,7 @@ I Guess This Will Be Usefull For Many People.....😇.
 
 **If you need any more modes in repo or If you find out any bugs, mention in [@codexbotzsupport ](https://www.telegram.dog/codexbotzsupport)**
 
-#### Features
+### Features
 - Fully customisable.
 - Customisable welcome messages.
 - More than one Posts in One Link.
@@ -52,14 +52,13 @@ I Guess This Will Be Usefull For Many People.....😇.
 **Thanks to [Erich](https://t.me/ErichDaniken) and his [InFoTel](https://t.me/InFoTel_Group) for this Video**
 
 #### Deploy in your VPS
-```bash
+````bash
 git clone https://github.com/CodeXBotz/File-Sharing-Bot
 cd File-Sharing-Bot
 pip3 install -r requirements.txt
 # <Create config.py appropriately>
 python3 main.py
-```
-##
+````
 
 ### Admin Commands
 
@@ -80,8 +79,28 @@ python3 main.py
 * `OWNER_ID` Must enter Your Telegram Id
 * `CHANNEL_ID` Your Channel ID eg:- -100xxxxxxxx
 * `ADMINS` Optional: A space separated list of user_ids of Admins, they can only create links
-* `START_MESSAGE` Optional: start message of bot, use HTML parsemode format
+* `START_MESSAGE` Optional: start message of bot, use HTML and <a href='https://github.com/shahsad-klr/File-Sharing-Bot/blob/main/README.md#start_message'>fillings</a>
 * `FORCE_SUB_CHANNEL` Optional: ForceSub Channel ID, leave 0 if you want disable force sub
+
+### Extra Variables
+
+* `CUSTOM_CAPTION` put your Custom caption text if you want Setup Custom Caption, you can use HTML and <a href='https://github.com/shahsad-klr/File-Sharing-Bot/blob/main/README.md#custom_caption'>fillings</a> for formatting (only for documents)
+* `DISABLE_CHANNEL_BUTTON` Put True to Disable Channel Share Button, Default if False
+
+### Fillings
+#### START_MESSAGE
+
+* `{first}` - User first name
+* `{last}` - User last name
+* `{id}` - User ID
+* `{mention}` - Mention the user
+* `{username}` - Username
+
+#### CUSTOM_CAPTION
+
+* `{filename}` - file name of the Document
+* `{perviouscaption}` - Original Caption
+
 
 ## Support   
 Join Our [Telegram Group](https://www.telegram.dog/codexbotzsupport) For Support/Assistance And Our [Channel](https://www.telegram.dog/codexbotz) For Updates.   
