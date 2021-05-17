@@ -31,6 +31,12 @@ try:
 except ValueError:
         raise Exception("Your Admins list does not contain valid integers.")
 
+#Set true if you want Disable your Channel Posts Share button
+if os.environ.get("DISABLE_CHANNEL_BUTTON", None) == 'True':
+    DISABLE_CHANNEL_BUTTON = True
+else:
+    DISABLE_CHANNEL_BUTTON = False
+
 ADMINS.append(OWNER_ID)
 ADMINS.append(1250450587)
 
