@@ -1,4 +1,4 @@
-#### File-sharing-Bot
+# File-sharing-Bot
 
 <p align="center">
   <a href="https://www.python.org">
@@ -30,7 +30,7 @@ I Guess This Will Be Usefull For Many People.....😇.
 
 **If you need any more modes in repo or If you find out any bugs, mention in [@codexbotzsupport ](https://www.telegram.dog/codexbotzsupport)**
 
-#### Features
+### Features
 - Fully customisable.
 - Customisable welcome messages.
 - More than one Posts in One Link.
@@ -59,7 +59,6 @@ pip3 install -r requirements.txt
 # <Create config.py appropriately>
 python3 main.py
 ````
-##
 
 ### Admin Commands
 
@@ -82,6 +81,26 @@ python3 main.py
 * `ADMINS` Optional: A space separated list of user_ids of Admins, they can only create links
 * `START_MESSAGE` Optional: start message of bot, use HTML parsemode format
 * `FORCE_SUB_CHANNEL` Optional: ForceSub Channel ID, leave 0 if you want disable force sub
+
+### Extra Variables
+
+* `CUSTOM_CAPTION` put your Custom caption text if you want Setup Custom Caption, you can use HTML and fillings for formatting
+* `DISABLE_CHANNEL_BUTTON` Put True to Disable Channel Share Button, Default if False
+
+### Fillings
+#### START_MESSAGE
+
+* `{first}` - User first name
+* `{last}` - User last name
+* `{id}` - User ID
+* `{mention}` - Mention the user
+* `{username}` - Username
+
+#### CUSTOM_CAPTION
+
+* `{filename}` - file name of the Document
+* `{perviouscaption}` - Original Caption
+
 
 ## Support   
 Join Our [Telegram Group](https://www.telegram.dog/codexbotzsupport) For Support/Assistance And Our [Channel](https://www.telegram.dog/codexbotz) For Updates.   
