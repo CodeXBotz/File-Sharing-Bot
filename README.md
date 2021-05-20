@@ -99,7 +99,7 @@ python3 main.py
 #### CUSTOM_CAPTION
 
 * `{filename}` - file name of the Document
-* `{perviouscaption}` - Original Caption
+* `{previouscaption}` - Original Caption
 
 
 ## Support   
