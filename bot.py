@@ -1,4 +1,4 @@
-#(©)Codexbotz
+#(©)Kiccha creation Bot
 
 import pyromod.listen
 from pyrogram import Client
