@@ -2,7 +2,7 @@
 
 import asyncio
 from pyrogram import Client, filters, __version__
-from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
+from pyrogram.types import Message
 from pyrogram.errors import FloodWait
 
 from bot import Bot
@@ -68,16 +68,7 @@ async def start_command(client: Client, message: Message):
                 await msg.copy(chat_id=message.from_user.id, caption = caption, parse_mode = 'html', reply_markup = reply_markup)
             except:
                 pass
-        return
-    else:
-        reply_markup = InlineKeyboardMarkup(
-            [
-                [
-                    InlineKeyboardButton("😊 About Me", callback_data = "about"),
-                    InlineKeyboardButton("🔒 Close", callback_data = "close")
-                ]
-            ]
-        )
+ 
         await message.reply_text(
             text = START_MSG.format(
                 first = message.from_user.first_name,
