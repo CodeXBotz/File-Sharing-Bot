@@ -11,7 +11,7 @@
     &nbsp;<img src="https://img.shields.io/badge/Code%20%F0%9D%95%8F%20Botz-Channel-blue?style=flat-square&logo=telegram" width="130" height="18">&nbsp;
   </a>
   <a href="https://t.me/movie360hub">
-    &nbsp;<img src="https://img.shields.io/badge/Code%20%F0%9D%95%8F%20Botz-Group-blue?style=flat-square&logo=telegram" width="130" height="18">&nbsp;
+    &nbsp;<img src="https://img.shields.io/badge/movie360%20%F0%9D%95%8F%20hub-Group-blue?style=flat-square&logo=telegram" width="130" height="18">&nbsp;
   </a>
   <br>
   <a href="https://github.com/CodeXBotz/File-Sharing-Bot/stargazers">
@@ -103,7 +103,7 @@ python3 main.py
 
 
 ## Support   
-Join Our [Telegram Group](https://www.telegram.dog/codexbotzsupport) For Support/Assistance And Our [Channel](https://www.telegram.dog/codexbotz) For Updates.   
+Join Our [Telegram Group](https://www.telegram.dog/movie360hub) For Support/Assistance And Our [Channel](https://www.telegram.dog/codexbotz) For Updates.   
    
 Report Bugs, Give Feature Requests There..   
 
