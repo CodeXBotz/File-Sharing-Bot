@@ -8,10 +8,10 @@
     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYUFC_daQBVwH6D5ibRoYy-ba4VgLkUyYpcA&usqp=CAU" width="250">
   </a><br>
   <a href="https://t.me/Central_Links">
-    &nbsp;<img src="https://img.shields.io/badge/Code%20%F0%9D%95%8F%20Updates-Channel-blue?style=flat-square&logo=telegram" width="130" height="18">&nbsp;
+    &nbsp;<img src="https://img.shields.io/badge/Channel-blue?style=flat-square&logo=telegram" width="130" height="18">&nbsp;
   </a>
   <a href="https://t.me/central_request">
-    &nbsp;<img src="https://img.shields.io/badge/Code%20%F0%9D%95%8F%20Botz-Group-blue?style=flat-square&logo=telegram" width="130" height="18">&nbsp;
+    &nbsp;<img src="https://img.shields.io/badge/Group-blue?style=flat-square&logo=telegram" width="130" height="18">&nbsp;
   </a>
   <br>
   <a href="https://github.com/Thiyaku17/File-Sharing-Bot/stargazers">
