@@ -5,20 +5,20 @@
     <img src="http://ForTheBadge.com/images/badges/made-with-python.svg" width ="250">
   </a>
   <a href="https://t.me/Central_Links">
-    <img src="https://github.com/CodeXBotz/PyrogramGenStr/blob/main/resources/madebycodex-badge.svg" width="250">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYUFC_daQBVwH6D5ibRoYy-ba4VgLkUyYpcA&usqp=CAU" width="250">
   </a><br>
   <a href="https://t.me/Central_Links">
     &nbsp;<img src="https://img.shields.io/badge/Code%20%F0%9D%95%8F%20Updates-Channel-blue?style=flat-square&logo=telegram" width="130" height="18">&nbsp;
   </a>
-  <a href="https://t.me/codexbotzsupport">
+  <a href="https://t.me/central_request">
     &nbsp;<img src="https://img.shields.io/badge/Code%20%F0%9D%95%8F%20Botz-Group-blue?style=flat-square&logo=telegram" width="130" height="18">&nbsp;
   </a>
   <br>
   <a href="https://github.com/Thiyaku17/File-Sharing-Bot/stargazers">
-    <img src="https://img.shields.io/github/stars/CodeXBotz/File-Sharing-Bot?style=social">
+    <img src="https://img.shields.io/github/stars/Thiyaku17/File-Sharing-Bot?style=social">
   </a>
   <a href="https://github.com/Thiyaku17/File-Sharing-Bot/fork">
-    <img src="https://img.shields.io/github/forks/CodeXBotz/File-Sharing-Bot?label=Fork&style=social">
+    <img src="https://img.shields.io/github/forks/Thiyaku17/File-Sharing-Bot?label=Fork&style=social">
   </a>  
 </p>
 
@@ -35,11 +35,13 @@ I Guess This Will Be Usefull For Many People.....😇.
 - Customisable welcome messages.
 - More than one Posts in One Link.
 - Can be deployed on heroku directly.
+- Broadcast Support
 
 ### Setup
 
 - Add the bot to Database Channel with all permission
 - Add bot to ForceSub channel as Admin with Invite Users via Link Permission if you enabled ForceSub 
+- Add MangoDB Url
 
 ##
 ### Installation
@@ -69,6 +71,10 @@ python3 main.py
 
 /genlink - create link for one post
 
+/subscribers - To Know The Count Of the Person Using the bot (Owner Only)
+
+/send - To Send A Broadcast Message (Owner Only)
+
 ```
 
 ### Variables
@@ -81,6 +87,7 @@ python3 main.py
 * `ADMINS` Optional: A space separated list of user_ids of Admins, they can only create links
 * `START_MESSAGE` Optional: start message of bot, use HTML and <a href='https://github.com/shahsad-klr/File-Sharing-Bot/blob/main/README.md#start_message'>fillings</a>
 * `FORCE_SUB_CHANNEL` Optional: ForceSub Channel ID, leave 0 if you want disable force sub
+* `DB_URI` Create a postgre database if you deploy the locally | In heroku do nothing
 
 ### Extra Variables
 
@@ -103,7 +110,7 @@ python3 main.py
 
 
 ## Support   
-Join Our [Telegram Group](https://www.telegram.dog/codexbotzsupport) For Support/Assistance And Our [Channel](https://www.telegram.dog/codexbotz) For Updates.   
+Join Our [Telegram Channel](https://www.telegram.dog/Central_Links) For Support/Assistance And Our [Channel](https://www.telegram.dog/central_links) For Updates.   
    
 Report Bugs, Give Feature Requests There..   
 
@@ -115,7 +122,7 @@ Report Bugs, Give Feature Requests There..
 ### Licence
 [![GNU GPLv3 Image](https://www.gnu.org/graphics/gplv3-127x51.png)](http://www.gnu.org/licenses/gpl-3.0.en.html)  
 
-[FILE-SHARING-BOT](https://github.com/CodeXBotz/File-Sharing-Bot/) is Free Software: You can use, study share and improve it at your
+[FILE-SHARING-BOT](https://github.com/Thiyaku17/File-Sharing-Bot/) is Free Software: You can use, study share and improve it at your
 will. Specifically you can redistribute and/or modify it under the terms of the
 [GNU General Public License](https://www.gnu.org/licenses/gpl.html) as
 published by the Free Software Foundation, either version 3 of the License, or
