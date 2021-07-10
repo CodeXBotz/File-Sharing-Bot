@@ -22,6 +22,15 @@ FORCE_SUB_CHANNEL = int(os.environ.get("FORCE_SUB_CHANNEL", "0"))
 
 TG_BOT_WORKERS = int(os.environ.get("TG_BOT_WORKERS", "4"))
 
+# Database URI
+    DB_URI = os.environ.get("DATABASE_URL", "")
+
+    # Group / channel Id: Members to which inline query answered
+    SUPPORT_CHAT = os.environ.get("SUPPORT_CHAT", "")
+
+    # List of admin user ids for special functions(Storing as an array)
+    AUTH_USERS = set(int(x) for x in os.environ.get("AUTH_USERS", "").split())
+
 #start message
 START_MSG = os.environ.get("START_MESSAGE", "Hello {first}\n\nI can store private files in Specified Channel and other users can access it from special link.")
 try:
@@ -73,26 +82,6 @@ logging.basicConfig(
     datefmt='%d-%b-%y %H:%M:%S'
 )
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
-
-class Config(object):
-    # Get a bot token from botfather
-    TG_BOT_TOKEN = os.environ.get("TG_BOT_TOKEN", "")
-
-    # Get from my.telegram.org
-    APP_ID = int(os.environ.get("APP_ID", ""))
-
-    # Get from my.telegram.org
-    API_HASH = os.environ.get("API_HASH", "")
-
-    # Database URI
-    DB_URI = os.environ.get("DATABASE_URL", "")
-
-    # Group / channel Id: Members to which inline query answered
-    SUPPORT_CHAT = os.environ.get("SUPPORT_CHAT", "")
-
-    # List of admin user ids for special functions(Storing as an array)
-    AUTH_USERS = set(int(x) for x in os.environ.get("AUTH_USERS", "").split())
-
 
 def LOGGER(name: str) -> logging.Logger:
     return logging.getLogger(name)
