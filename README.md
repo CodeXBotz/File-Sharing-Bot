@@ -5,7 +5,7 @@
     <img src="http://ForTheBadge.com/images/badges/made-with-python.svg" width ="250">
   </a>
   <a href="https://t.me/Central_Links">
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYUFC_daQBVwH6D5ibRoYy-ba4VgLkUyYpcA&usqp=CAU" width="250">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYUFC_daQBVwH6D5ibRoYy-ba4VgLkUyYpcA&usqp=CAU" width="150">
   </a><br>
   <a href="https://t.me/Central_Links">
     &nbsp;<img src="https://img.shields.io/badge/Channel-blue?style=flat-square&logo=telegram" width="130" height="18">&nbsp;
