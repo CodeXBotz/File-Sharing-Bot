@@ -45,38 +45,3 @@
     }
   }
 }
-{
-  "name": "broadcast-bot",
-  "description": "Message broadcast bot",
-  "keywords": ["telegram", "message", "broadcast", "bot", "open", "source"],
-  "logo": "https://cdn.pixabay.com/photo/2017/10/25/18/13/beacon-icon-2888803_960_720.png",
-  "website": "https://github.com/m4mallu/broadcast-bot",
-  "repository": "https://github.com/m4mallu/broadcast-bot",
-  "env": {
-        "APP_ID": {"description": "Get this value from https://my.telegram.org", "required": true},
-        "API_HASH": {"description": "Get this value from https://my.telegram.org" , "required": true},
-        "TG_BOT_TOKEN": {"description": "Get Bot Token From @BotFather Bot", "required": true},
-        "SUPPORT_CHAT": {"description": "Public group / channel username of the discussion chat (include - @)", "required": false},
-        "AUTH_USERS": {"description":  "List of admin user ids for sending posts; separated by space", "required":  true},
-        "ENV": {"description": "Set this to ANYTHING","value": "ANYTHING"}
-  },
-  "addons": [
-    {
-    "plan": "heroku-postgresql",
-      "options": {
-        "version": "12"
-      }
-    }
-  ],
-  "buildpacks": [
-    {
-      "url": "heroku/python"
-    }
-  ],
-  "formation": {
-    "worker": {
-      "quantity": 1,
-      "size": "free"
-    }
-  }
-}
