@@ -73,8 +73,8 @@ async def start_command(client: Client, message: Message):
         reply_markup = InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("😊 About Me", callback_data = "about"),
-                    InlineKeyboardButton("🔒 Close", callback_data = "close")
+                    InlineKeyboardButton("😊 ನಮ್ಮ ಬಗ್ಗೆ", callback_data = "about"),
+                    InlineKeyboardButton("🔒 ಸಾಕು ನಿಲ್ಲಿಸು", callback_data = "close")
                 ]
             ]
         )
@@ -94,14 +94,14 @@ async def start_command(client: Client, message: Message):
 
 @Bot.on_message(filters.command('start') & filters.private)
 async def not_joined(client: Client, message: Message):
-    text = "<b>You need to join in my Channel/Group to use me\n\nKindly Please join Channel</b>"
+    text = "<b>ನನ್ನನ್ನು ಉಪಯೋಗಿಸಲು , ನೀವು ನಮ್ಮ ಚಾನೆಲ್ಗೆ ಸೇರಿಸಬೇಕು\n\nಆದ್ದರಿಂದ ನಮ್ಮ ಚಾನೆಲ್ಗೆ ಸೇರಿ</b>"
     message_text = message.text
     try:
         command, argument = message_text.split()
         text = text + f" <b>and <a href='https://t.me/{client.username}?start={argument}'>try again</a></b>"
     except ValueError:
         pass
-    reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("Join Channel", url = client.invitelink)]])
+    reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("ಚಾನೆಲ್ ಸೇರಿ", url = client.invitelink)]])
     await message.reply(
         text = text,
         reply_markup = reply_markup,
