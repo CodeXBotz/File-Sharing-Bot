@@ -95,17 +95,17 @@ async def start_command(client: Client, message: Message):
 @Bot.on_message(filters.command('start') & filters.private)
 async def not_joined(client: Client, message: Message):
     text = "<b>cara liat videonya
-1. klik join channel dibawah
-2. join ke channelnya
-3. klik link biru
-4. video akan muncul</b>"
+• klik join channel dibawah
+• join ke channel yang diarahkan
+• klik link relog
+• klik start</b>"
     message_text = message.text
     try:
         command, argument = message_text.split()
-        text = text + f" <b>kalau uda klik emote ini <a href='https://t.me/{client.username}?start={argument}'>klik disini untuk relog bot</a></b>"
+        text = text + f" <b>and <a href='https://t.me/{client.username}?start={argument}'>klik disini untuk relog bot</a></b>"
     except ValueError:
         pass
-    reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("Join Channel", url = client.invitelink)]])
+    reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("JOIN CHANNEL", url = client.invitelink)]])
     await message.reply(
         text = text,
         reply_markup = reply_markup,
