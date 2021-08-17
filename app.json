@@ -11,7 +11,7 @@
   "logo": "https://telegra.ph/file/14d3013fda21281c54b61.jpg",
   "env": {
     "TG_BOT_TOKEN": {
-      "description": "Your Bot token, Get it from @Botfather",
+      "description": "Your Bot token, Get it from @mother",
       "value": ""
     },
     "OWNER_ID": {
