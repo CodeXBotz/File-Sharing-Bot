@@ -23,7 +23,7 @@ FORCE_SUB_CHANNEL = int(os.environ.get("FORCE_SUB_CHANNEL", "0"))
 TG_BOT_WORKERS = int(os.environ.get("TG_BOT_WORKERS", "4"))
 
 #start message
-START_MSG = os.environ.get("START_MESSAGE", "Hello {first}\n\nI can store private files in Specified Channel and other users can access it from special link.")
+START_MSG = os.environ.get("START_MESSAGE", "Hello {first}\n\najika kamu ingin belajar, atau order bot seperti ini, langsung hubungi admin channel @bandarvideotelegram 😁")
 try:
     ADMINS=[]
     for x in (os.environ.get("ADMINS", "").split()):
