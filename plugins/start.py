@@ -71,10 +71,10 @@ async def start_command(client: Client, message: Message):
         return
     else:
         reply_markup = InlineKeyboardMarkup(
-            [
-                [
-                    InlineKeyboardButton("😊 About Me", callback_data = "about"),
-                    InlineKeyboardButton("🔒 Close", callback_data = "close")
+    [
+        [InlineKeyboardButton("Mᴏᴠɪᴇ Sᴇʀɪᴇs​ UᴘᴅᴀᴛᴇS 🎞", url= "https://t.me/joinchat/gQ9OiVJlJSsyNWM1")],
+        [InlineKeyboardButton("Help 🧐", url = "https://t.me/Mlm_redirect/146"),
+        InlineKeyboardButton(text ='🗑 Close', callback_data = "close")
                 ]
             ]
         )
@@ -94,14 +94,9 @@ async def start_command(client: Client, message: Message):
 
 @Bot.on_message(filters.command('start') & filters.private)
 async def not_joined(client: Client, message: Message):
-    text = "<b>You need to join in my Channel/Group to use me\n\nKindly Please join Channel</b>"
-    message_text = message.text
-    try:
-        command, argument = message_text.split()
-        text = text + f" <b>and <a href='https://t.me/{client.username}?start={argument}'>try again</a></b>"
-    except ValueError:
-        pass
-    reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("Join Channel", url = client.invitelink)]])
+    text = "☺️ <b>To Get Your Request You must Join in Our</b> &quot; <a href='https://t.me/joinchat/gQ9OiVJlJSsyNWM1'>Mᴏᴠɪᴇ Sᴇʀɪᴇs​ UᴘᴅᴀᴛᴇS 🎞</a> &quot;. <b>Then use &quot; 🔁 REFRESH 🔁&quot; Button</b>/n/n☺️ <b>നിങ്ങളുടെ അഭ്യർത്ഥന ലഭിക്കുന്നതിന് നിങ്ങൾ ഞങ്ങളുടെ</b> &quot; <a href='https://t.me/joinchat/gQ9OiVJlJSsyNWM1'>Mᴏᴠɪᴇ Sᴇʀɪᴇs​ UᴘᴅᴀᴛᴇS 🎞</a> <b>&quot; ജോയിൻ ചെയ്യണം. ശേഷം &quot; 🔁 REFRESH 🔁&quot; ബട്ടൺ ക്ലിക്ക് ചെയ്യൂ.</b>",
+                reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("Mᴏᴠɪᴇ Sᴇʀɪᴇs​ UᴘᴅᴀᴛᴇS 🎞", url= "https://t.me/joinchat/gQ9OiVJlJSsyNWM1")],
+        [InlineKeyboardButton(text ='🔁 REFRESH 🔁', url ='https://t.me/{client.username}?start={argument}')]])
     await message.reply(
         text = text,
         reply_markup = reply_markup,
