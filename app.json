@@ -1,4 +1,6 @@
 
+
+
 {
   "name": "TG File Sharing Bot",
   "description": "file sharing bot store posts and it can access by special links",
@@ -43,5 +45,25 @@
       "value": "",
       "required": false
     }
+  },
+  "addons": [
+    {
+    "plan": "heroku-postgresql",
+      "options": {
+        "version": "12"
+      }
+    }
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/python"
+    }
+  ],
+  "formation": {
+    "worker": {
+      "quantity": 1,
+      "size": "free"
+    }
   }
 }
+
