@@ -69,6 +69,9 @@ python3 main.py
 
 /genlink - create link for one post
 
+/users - view bot statistics
+
+/broadcast - broadcast any messages to bot users
 ```
 
 ### Variables
