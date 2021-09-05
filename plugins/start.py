@@ -2,7 +2,7 @@
 import os
 import asyncio
 from pyrogram import Client, filters, __version__
-from pyrogram import Bot
+
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram.errors import FloodWait
 
