@@ -1,14 +1,24 @@
 #(©)Codexbotz
-
+import os
 import asyncio
 from pyrogram import Client, filters, __version__
+from pyrogram import Bot
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram.errors import FloodWait
 
 from bot import Bot
 from config import ADMINS, START_MSG, OWNER_ID, CUSTOM_CAPTION, DISABLE_CHANNEL_BUTTON
 from helper_func import subscribed, encode, decode, get_messages
+from database.support import users_info
+from database.sql import add_user, query_msg
+########₹₹₹₹#################₹#₹₹₹₹₹!₹###########₹₹₹₹₹₹₹₹##₹#####
+USERS_LIST = """<b>⭕️Total:</b>\n\n⭕️Subscribers - {}\n⭕️Blocked- {}"""
 
+WAIT_MSG = """"<b>Processing ...</b>"""
+
+REPLY_ERROR = """<code>Use this command as a replay to any telegram message with out any spaces.</code>"""
+
+#########₹₹₹₹#################₹#₹₹₹₹₹!₹###########₹₹₹₹₹₹₹₹##₹#####
 @Bot.on_message(filters.command('start') & filters.private & subscribed)
 async def start_command(client: Client, message: Message):
     text = message.text
@@ -108,3 +118,50 @@ async def not_joined(client: Client, message: Message):
         quote = True,
         disable_web_page_preview = True
     )
+
+@Bot.on_message(filters.private & filters.command('start'))
+async def start_bot(bot, m: Message):
+    id = m.from_user.id
+    user_name = '@' + m.from_user.username if m.from_user.username else None
+    await add_user(id, user_name)
+     
+
+@Bot.on_message(filters.private & filters.command('users'))
+async def subscribers_count(bot, m: Message):
+    id = m.from_user.id
+    if id not in ADMINS:
+        return
+    msg = await m.reply_text(WAIT_MSG)
+    messages = await users_info(bot)
+    active = messages[0]
+    blocked = messages[1]
+    await m.delete()
+    await msg.edit(USERS_LIST.format(active, blocked))
+
+
+
+@Bot.on_message(filters.private & filters.command('broadcast'))
+async def send_text(bot, m: Message):
+    id = m.from_user.id
+    if id not in ADMINS:
+        return
+    if (" " not in m.text) and ("broadcast" in m.text) and (m.reply_to_message is not None):
+        query = await query_msg()
+        for row in query:
+            chat_id = int(row[0])
+            try:
+                await bot.copy_message(
+                    chat_id=chat_id,
+                    from_chat_id=m.chat.id,
+                    message_id=m.reply_to_message.message_id,
+                    caption=m.caption,
+                    reply_markup=m.reply_markup
+                )
+            except FloodWait as e:
+                await asyncio.sleep(e.x)
+            except Exception:
+                pass
+    else:
+        msg = await m.reply_text(REPLY_ERROR, m.message_id)
+        await asyncio.sleep(8)
+        await msg.delete()
