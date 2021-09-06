@@ -121,8 +121,7 @@ async def not_joined(client: Client, message: Message):
     reply_markup = InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("Join Channel", url =client.invitelink)],
-                    [InlineKeyboardButton("🔃Try Again", url =try_url)
+                    InlineKeyboardButton("Join Channel", url =client.invitelink)],                   [InlineKeyboardButton("🔃Try Again", url =try_url)
                 ]
             ]
         )  
