@@ -118,7 +118,7 @@ async def not_joined(client: Client, message: Message):
         try_url = f"https://t.me/{client.username}?start={argument}"
     except ValueError:
         pass
-    reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("Join Channel", url = client.invitelink)],[InlineKeyboardButton("🔃Try Again", url=try_url)]]])
+    reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("Join Channel", url = client.invitelink)],[InlineKeyboardButton("🔃Try Again", url=try_url)]])
     await message.reply(
         text = FORCE_MSG.format(
                 first = message.from_user.first_name,
