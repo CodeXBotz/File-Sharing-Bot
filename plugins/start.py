@@ -112,10 +112,10 @@ async def start_command(client: Client, message: Message):
 
 @Bot.on_message(filters.command('start') & filters.private)
 async def not_joined(client: Client, message: Message):
+    try_url = f"https://t.me/{client.username}?start={argument}"
     message_text = message.text
     try:
         command, argument = message_text.split()
-        try_url = f"https://t.me/{client.username}?start={argument}"
     except ValueError:
         pass
     reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("Join Channel", url = client.invitelink)],[InlineKeyboardButton("🔃Try Again", url=try_url)]])
