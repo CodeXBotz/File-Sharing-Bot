@@ -112,21 +112,7 @@ async def start_command(client: Client, message: Message):
 
 @Bot.on_message(filters.command('start') & filters.private)
 async def not_joined(client: Client, message: Message):
-    try_url = message.text
-    try:
-        command, argument = try_url.split()
-        text = f"https://t.me/{client.username}?start={argument}"
-    except ValueError:
-        pass
-    reply_markup = InlineKeyboardMarkup(
-            [
-                [
-                    InlineKeyboardButton("Join Channel", url =client.invitelink),
-                    InlineKeyboardButton("🔃Try Again", url =try_url)
-                ]
-            ]
-        )  
-    
+    reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("Join Channel", url = client.invitelink)]])
     await message.reply(
         text = FORCE_MSG.format(
                 first = message.from_user.first_name,
