@@ -32,7 +32,7 @@ I Guess This Will Be Usefull For Many People.....😇.
 
 ### Features
 - Fully customisable.
-- Customisable welcome messages.
+- Customisable welcome&Forcesub messages.
 - More than one Posts in One Link.
 - Can be deployed on heroku directly.
 
@@ -83,6 +83,7 @@ python3 main.py
 * `CHANNEL_ID` Your Channel ID eg:- -100xxxxxxxx
 * `ADMINS` Optional: A space separated list of user_ids of Admins, they can only create links
 * `START_MESSAGE` Optional: start message of bot, use HTML and <a href='https://github.com/shahsad-klr/File-Sharing-Bot/blob/main/README.md#start_message'>fillings</a>
+* `FORCE_SUB_MESSAGE`Optional:Force sub message of bot, use HTML
 * `FORCE_SUB_CHANNEL` Optional: ForceSub Channel ID, leave 0 if you want disable force sub
 
 ### Extra Variables
