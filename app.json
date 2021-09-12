@@ -37,6 +37,10 @@
       "description": "Optional: start message of bot, use HTML parsemode format",
       "value": "Hello {first}\n\nI can store private files in Specified Channel and other users can access it from special link."
     },
+    "FORCE_SUB_MESSAGE": {
+      "description": "Optional: Force Sub message of bot, use HTML parsemode format",
+      "value": "Hello {first}\n\n<b>You need to join in my Channel/Group to use me\n\nKindly Please join Channel</b>"
+    },
     "ADMINS": {
       "description": "A space separated list of user_ids of Admins, they can only create links",
       "value": "",
