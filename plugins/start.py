@@ -14,7 +14,7 @@ from database.sql import add_user, query_msg
 
 #=====================================================================================##
 
-USERS_LIST = """<b>⭕️Total:</b>\n\n⭕️Subscribers - {}\n⭕️Blocked- {}"""
+
 
 WAIT_MSG = """"<b>Processing ...</b>"""
 
