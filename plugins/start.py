@@ -2,7 +2,7 @@
 import os
 import asyncio
 from pyrogram import Client, filters, __version__
-from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
+from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
 from pyrogram.errors import FloodWait, UserIsBlocked, InputUserDeactivated
 
 from bot import Bot
@@ -112,7 +112,25 @@ async def start_command(client: Client, message: Message):
 
 @Bot.on_message(filters.command('start') & filters.private)
 async def not_joined(client: Client, message: Message):
-    reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("Join Channel", url = client.invitelink)]])
+    buttons = [
+        [
+            InlineKeyboardButton(
+                "Join Channel",
+                url = client.invitelink)
+        ]
+    ]
+    try:
+        buttons.append(
+            [
+                InlineKeyboardButton(
+                    text = 'Try Again',
+                    url = f"https://t.me/{client.username}?start={message.command[1]}"
+                )
+            ]
+        )
+    except IndexError:
+        pass
+
     await message.reply(
         text = FORCE_MSG.format(
                 first = message.from_user.first_name,
@@ -121,7 +139,7 @@ async def not_joined(client: Client, message: Message):
                 mention = message.from_user.mention,
                 id = message.from_user.id
             ),
-        reply_markup = reply_markup,
+        reply_markup = InlineKeyboardMarkup(buttons),
         quote = True,
         disable_web_page_preview = True
     )
