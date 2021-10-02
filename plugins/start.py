@@ -151,7 +151,6 @@ async def subscribers_count(bot, m: Message):
         return
     msg = await m.reply_text(WAIT_MSG)
     messages = await users_info(bot)
-    active = messages[0]
     await m.delete()
     await msg.edit(USERS_LIST.format(active = messages[0], blocked = messages[1]))
 
