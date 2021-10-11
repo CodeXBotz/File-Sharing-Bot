@@ -32,6 +32,13 @@
     "FORCE_SUB_CHANNEL":{
       "description": "id of the channel or group, if you want enable force sub feature else put 0",
       "value": "0"
+      "UPDATES_CHANNEL": {
+
+            "description": "ID of a Channel which you want to do Force Sub to use the bot. Example: -100123456789",
+
+            "required": false
+
+        },
     },
     "START_MESSAGE": {
       "description": "Optional: start message of bot, use HTML parsemode format",
