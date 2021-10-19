@@ -150,7 +150,7 @@ async def not_joined(client: Client, message: Message):
 @Bot.on_message(filters.command('users') & filters.private & filters.user(ADMINS))
 async def get_users(client: Bot, message: Message):
     msg = await client.send_message(chat_id=message.chat.id, text="Counting Users....")
-    users = full_userbase()
+    users = await full_userbase()
     await msg.edit(f"{users} users are using this bot ")
 
 @Bot.on_message(filters.private & filters.command('broadcast') & filters.user(ADMINS))
