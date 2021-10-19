@@ -8,18 +8,14 @@ from pyrogram.errors import FloodWait, UserIsBlocked, InputUserDeactivated
 from bot import Bot
 from config import ADMINS, FORCE_MSG, START_MSG, OWNER_ID, CUSTOM_CAPTION, DISABLE_CHANNEL_BUTTON
 from helper_func import subscribed, encode, decode, get_messages
-from database.support import users_info
 from database.sql import add_user, query_msg, full_userbase
 
 
 #=====================================================================================##
 
-
-
 WAIT_MSG = """"<b>Processing ...</b>"""
 
 REPLY_ERROR = """<code>Use this command as a replay to any telegram message with out any spaces.</code>"""
-
 
 #=====================================================================================##
 
@@ -149,9 +145,9 @@ async def not_joined(client: Client, message: Message):
 
 @Bot.on_message(filters.command('users') & filters.private & filters.user(ADMINS))
 async def get_users(client: Bot, message: Message):
-    msg = await client.send_message(chat_id=message.chat.id, text="Counting Users....")
+    msg = await client.send_message(chat_id=message.chat.id, text="`Counting Users....`")
     users = await full_userbase()
-    await msg.edit(f"{len(users)} users are using this bot ")
+    await msg.edit(f"{len(users)} **users are using this bot**")
 
 @Bot.on_message(filters.private & filters.command('broadcast') & filters.user(ADMINS))
 async def send_text(client: Bot, message: Message):
