@@ -8,10 +8,10 @@ from config import FORCE_SUB_CHANNEL, ADMINS
 from pyrogram.errors.exceptions.bad_request_400 import UserNotParticipant
 from pyrogram.errors import FloodWait
 
-async def is_subscribed(filter, client, message):
+async def is_subscribed(filter, client, update):
     if not FORCE_SUB_CHANNEL:
         return True
-    user_id = message.from_user.id
+    user_id = update.from_user.id
     if user_id in ADMINS:
         return True
     try:
