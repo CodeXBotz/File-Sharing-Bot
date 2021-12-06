@@ -111,7 +111,7 @@ async def start_command(client: Client, message: Message):
 
 @Bot.on_message(filters.command('start') & filters.private)
 async def not_joined(client: Client, message: Message):
-<<<<<<< HEAD
+#<<<<<<< HEAD
     text = "<b>Kamu harus join/gabung channel terlebih dahulu agar bisa menonton video !</b>"
     message_text = message.text
     try:
