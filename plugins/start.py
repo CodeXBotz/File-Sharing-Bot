@@ -111,14 +111,6 @@ async def start_command(client: Client, message: Message):
 
 @Bot.on_message(filters.command('start') & filters.private)
 async def not_joined(client: Client, message: Message):
-#<<<<<<< HEAD
-    text = "<b>Kamu harus join/gabung channel terlebih dahulu agar bisa menonton video !</b>"
-    message_text = message.text
-    try:
-        command, argument = message_text.split()
-        text = text + f" <b>dan <a href='https://t.me/{client.username}?start={argument}'>Coba Lagi</a></b>"
-    except ValueError:
-=======
     buttons = [
         [
             InlineKeyboardButton(
@@ -136,7 +128,6 @@ async def not_joined(client: Client, message: Message):
             ]
         )
     except IndexError:
->>>>>>> 6dccc5ed218c0cde737ff1c5d072cd2cda14256e
         pass
 
     await message.reply(
