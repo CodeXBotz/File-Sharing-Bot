@@ -28,15 +28,13 @@ async def is_subscribed(filter, client, update):
 async def encode(string):
     string_bytes = string.encode("ascii")
     base64_bytes = base64.urlsafe_b64encode(string_bytes)
-    base64_rstrip = base64_bytes.decode("ascii")
-    base64_string = base64_rstrip.rstrip("=")
+    base64_string = (base64_bytes.decode("ascii")).strip("=")
     return base64_string
 
 async def decode(base64_string):
-    padding = 4 - (len(base64_string) % 4)
-    base64_rstrip = base64_string + ("=" * padding)
-    base64_bytes = base64_rstrip.encode("ascii")
-    string_bytes = base64.urlsafe_b64decode(base64_bytes)
+    base64_string = base64_string.strip("=")
+    base64_bytes = (base64_string + "=" * (-len(base64_string) % 4)).encode("ascii")
+    string_bytes = base64.urlsafe_b64decode(base64_bytes) 
     string = string_bytes.decode("ascii")
     return string
 
