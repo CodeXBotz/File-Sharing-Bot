@@ -45,6 +45,11 @@
       "description": "A space separated list of user_ids of Admins, they can only create links",
       "value": "",
       "required": false
+    },
+    "PROTECT_CONTENT": {
+      "description": "Protect contents from getting forwarded",
+      "value": "False",
+      "required": false
     }
   },
   "addons": [
