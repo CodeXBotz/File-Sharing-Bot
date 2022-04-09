@@ -13,13 +13,7 @@
   <a href="https://t.me/Cinemas_Empire">
     &nbsp;<img src="https://img.shields.io/badge/%F0%9D%90%8C%F0%9D%90%8E%F0%9D%90%95%F0%9D%90%88%F0%9D%90%84%F0%9D%90%92%20%F0%9D%90%84%F0%9D%90%8C%F0%9D%90%8F%F0%9D%90%8E%F0%9D%90%91%F0%9D%90%88%F0%9D%90%8E-GROUP-yellowgreen?style=flat-square&logo=telegram" width="130" height="18">&nbsp;
   </a>
-  <br>
-  <a href="https://github.com/leanardo7994/File-Sharing-Bot/stargazers">
-    <img src="https://img.shields.io/github/stars/CodeXBotz/File-Sharing-Bot?style=social">
-  </a>
-  <a href="https://github.com/leanardo7994/File-Sharing-Bot/fork">
-    <img src="https://img.shields.io/github/forks/CodeXBotz/File-Sharing-Bot?label=Fork&style=social">
-  </a>  
+  <br>  
 </p>
 
 
