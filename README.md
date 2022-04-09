@@ -22,7 +22,7 @@ I Guess This Will Be Usefull For Many People.....😇.
 
 ##
 
-**If you need any more modes in repo or If you find out any bugs, mention in [@codexbotzsupport ](https://www.telegram.dog/codexbotzsupport)**
+**If you need any more modes in repo or If you find out any bugs, mention in [@MECommentBot ](https://www.telegram.dog/MECommentBot)**
 
 ### Features
 - Fully customisable.
