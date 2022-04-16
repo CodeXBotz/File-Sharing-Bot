@@ -1,5 +1,5 @@
 {
-  "name": "TG File Sharing Bot",
+  "name": "TG File Share/Sharing Bot",
   "description": "file sharing bot store posts and it can access by special links",
   "keywords": [
     "telegram",
@@ -44,6 +44,11 @@
     "ADMINS": {
       "description": "A space separated list of user_ids of Admins, they can only create links",
       "value": "",
+      "required": false
+    },
+    "PROTECT_CONTENT": {
+      "description": "Protect contents from getting forwarded",
+      "value": "False",
       "required": false
     }
   },
