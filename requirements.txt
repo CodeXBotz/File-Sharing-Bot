@@ -1,9 +1,6 @@
-# --- For-Bot-Working --------- #
-pyrogram==2.0.30
+Pyrogram==2.0.30
 TgCrypto
-Pyromod
-# --- For-Database ------------ #
-sqlalchemy~=1.3.23
-psycopg2-binary
-feedparser
-
+motor
+aiofiles
+dnspython
+psutil
