@@ -19,7 +19,7 @@ async def is_subscribed(filter, client, update):
     except UserNotParticipant:
         return False
 
-    if not member.status in ["creator", "administrator", "member"]:
+    if member.status in ["creator", "administrator", "member"]:
         return False
     else:
         return True
