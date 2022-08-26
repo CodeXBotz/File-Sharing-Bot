@@ -76,6 +76,8 @@ python3 main.py
 /users - view bot statistics
 
 /broadcast - broadcast any messages to bot users
+
+/stats - checking your bot uptime
 ```
 
 ### Variables
