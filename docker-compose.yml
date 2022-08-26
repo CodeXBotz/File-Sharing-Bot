@@ -3,9 +3,9 @@ services:
   worker:
     build: .
     environment:
-      MONGO_URI: mongodb+srv://faiz:faiz@cluster0.wy7orpq.mongodb.net/?retryWrites=true&w=majority
-      SESSION: 1BVtsOJIBu5vdfiElIJDKvBuFbdVw0u-tpA12BWRgib6IyZbCK5B5Y4C8yWTua5piCwhNWVyczJtVtVXc_ysyIm5bUYJSVniWSCE1YyUs2rOpNuTGBbUVopDTXaYJr_YcYBNAe7OvrXxFOutqgCwlf8KD4DAJpFEYM-AycRP9Hx7QQXbYL6GoWUYT1LvpQhFC7s4plfcbQSqQBRvM-8-F0g_4w3iTuY3WWMX7LvDLJ5U0QwEgpugP_t2v0TIvERG4xMNYDlGKoeDb4K8N0fuaIzLuXGghu7MS8eChe3Qr2vMCtJcFEK7J2zJh-8F4y6YYgc0HUn5LHKx2fFYmEgMyM4JLL1eMUc0=
-      API_ID: 1088389
-      API_HASH: d3a73faf4d59647e73ab2b673964b07e
-      BOT_TOKEN: 5433785142:AAGoH5smyYPlHGxGULen9q6w-HzHgwP3aEo
+      DATABASE_URI: $DATABASE_URI
+      SESSION: $SESSION
+      API_ID: $API_ID
+      API_HASH: $API_HASH
+      BOT_TOKEN: $BOT_TOKEN
       
