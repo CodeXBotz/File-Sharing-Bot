@@ -57,8 +57,8 @@ I Guess This Will Be Usefull For Many People.....😇.
 
 #### Deploy in your VPS
 ````bash
-git clone https://github.com/CodeXBotz/File-Sharing-Bot
-cd File-Sharing-Bot
+git clone https://github.com/Dax083/File-share
+cd File-Share
 pip3 install -r requirements.txt
 # <Create config.py appropriately>
 python3 main.py
