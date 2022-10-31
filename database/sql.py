@@ -47,6 +47,17 @@ async def full_userbase():
     SESSION.close()
     return users
 
+#  delete user details -
+async def delete_user(id, user_name):
+    with INSERTION_LOCK:
+        msg = SESSION.query(Broadcast).get(id)
+        if not msg:
+            usr = Broadcast(id, user_name)
+            SESSION.remove(usr)
+            SESSION.commit()
+        else:
+            pass
+        
 async def query_msg():
     try:
         query = SESSION.query(Broadcast.id).order_by(Broadcast.id)
