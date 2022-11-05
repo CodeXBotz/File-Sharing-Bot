@@ -88,8 +88,8 @@ async def start_command(client: Client, message: Message):
         reply_markup = InlineKeyboardMarkup(
             [
                 [
-                    InlineKeyboardButton("😊 About Me", callback_data = "about"),
-                    InlineKeyboardButton("🔒 Close", callback_data = "close")
+                    InlineKeyboardButton("👤 ABOUT ME", callback_data = "about"),
+                    InlineKeyboardButton("🔒 CLOSE", callback_data = "close")
                 ]
             ]
         )
@@ -120,34 +120,30 @@ REPLY_ERROR = """<code>Use this command as a replay to any telegram message with
     
 @Bot.on_message(filters.command('start') & filters.private)
 async def not_joined(client: Client, message: Message):
-    buttons = [
-        [
-            InlineKeyboardButton(
-                "Join Channel",
-                url = client.invitelink)
-        ]
-    ]
-    try:
-        buttons.append(
-            [
-                InlineKeyboardButton(
-                    text = 'Try Again',
-                    url = f"https://t.me/{client.username}?start={message.command[1]}"
-                )
-            ]
-        )
-    except IndexError:
-        pass
+    mention = str(message.from_user.mention)
+    text = f"<b>Hello {mention}</b>\n\n<b>I Can Store</b> 𝐌𝐎𝐕𝐈𝐄𝐒 𝐄𝐌𝐏𝐎𝐑𝐈𝐎 <b>Files In This Bot And Other Users Can Access It From Special Link 📎</b>\n\n<b><a href='https://t.me/movies_emperio'>YOU NEED TO JOIN IN OUR CHANNEL TO DOWNLOAD THE MOVIE FILES 📂</a></b>"
 
+    message_text = message.text
+    try:
+
+        command, argument = message_text.split()
+        text = text + f"\n\n<b>AFTER JOINED THE CHANNEL\n<a href='https://t.me/{client.username}?start={argument}'>👉 CLICK HERE</a></b>"
+    except ValueError:
+        pass
+    reply_markup = InlineKeyboardMarkup(
+                        [
+                            [
+                                InlineKeyboardButton("👤 ABOUT ME", callback_data = "about"),
+                    InlineKeyboardButton("🔒 CLOSE", callback_data = "close")
+                            ],
+                            [
+                                InlineKeyboardButton("CLICK HERE TO JOIN THE CHANNEL", url = client.invitelink)
+                            ]
+                        ]
+                    )
     await message.reply(
-        text = FORCE_MSG.format(
-                first = message.from_user.first_name,
-                last = message.from_user.last_name,
-                username = None if not message.from_user.username else '@' + message.from_user.username,
-                mention = message.from_user.mention,
-                id = message.from_user.id
-            ),
-        reply_markup = InlineKeyboardMarkup(buttons),
+        text = text,
+        reply_markup = reply_markup,
         quote = True,
         disable_web_page_preview = True
     )
@@ -191,11 +187,11 @@ async def send_text(client: Bot, message: Message):
         
         status = f"""<b><u>Broadcast Completed</u>
 
-Total Users: <code>{total}</code>
-Successful: <code>{successful}</code>
-Blocked Users: <code>{blocked}</code>
-Deleted Accounts: <code>{deleted}</code>
-Unsuccessful: <code>{unsuccessful}</code></b>"""
+◉ Total Users: <code>{total}</code>
+◉ Successful: <code>{successful}</code>
+◉ Blocked Users: <code>{blocked}</code>
+◉ Deleted Accounts: <code>{deleted}</code>
+◉ Unsuccessful: <code>{unsuccessful}</code></b>"""
         
         return await pls_wait.edit(status)
 
