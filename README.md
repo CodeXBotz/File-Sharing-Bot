@@ -83,7 +83,7 @@ python3 main.py
 ### Variables
 
 * `API_HASH` Your API Hash from my.telegram.org
-* `API_ID` Your API ID from my.telegram.org
+* `APP_ID` Your API ID from my.telegram.org
 * `TG_BOT_TOKEN` Your bot token from @BotFather
 * `OWNER_ID` Must enter Your Telegram Id
 * `CHANNEL_ID` Your Channel ID eg:- -100xxxxxxxx
