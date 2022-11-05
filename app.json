@@ -7,7 +7,7 @@
     "sharing"
   ],
   "repository": "https://github.com/CodeXBotz/File-Sharing-Bot",
-  "logo": "https://telegra.ph/file/14d3013fda21281c54b61.jpg",
+  "logo": "https://ibb.co/FgPVtzw",
   "env": {
     "TG_BOT_TOKEN": {
       "description": "Your Bot token, Get it from @Botfather",
@@ -20,6 +20,14 @@
     "APP_ID":{
       "description": "your app id, take it from my.telegram.org",
       "value": ""
+    },
+    "DATABASE_URL": {
+      "description": "Paste your mongo db url",
+      "value": "url"
+    },
+    "DATABASE_NAME":{
+      "description": "Enter your DATABASE_NAME ",
+      "value": "filesharexbot"
     },
     "API_HASH":{
       "description": "your api hash, take it from my.telegram.org",
@@ -52,14 +60,6 @@
       "required": false
     }
   },
-  "addons": [
-    {
-    "plan": "heroku-postgresql",
-      "options": {
-        "version": "12"
-      }
-    }
-  ],
   "buildpacks": [
     {
       "url": "heroku/python"
