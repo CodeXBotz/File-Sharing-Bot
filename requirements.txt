@@ -3,7 +3,5 @@ pyrogram
 TgCrypto
 Pyromod
 # --- For-Database ------------ #
-sqlalchemy~=1.3.23
-psycopg2-binary
-feedparser
-
+pymongo
+dnspython

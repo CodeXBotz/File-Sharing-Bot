@@ -1,4 +1,8 @@
 #(©)CodeXBotz
+
+
+
+
 import os
 import asyncio
 from pyrogram import Client, filters, __version__
@@ -7,28 +11,21 @@ from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, 
 from pyrogram.errors import FloodWait, UserIsBlocked, InputUserDeactivated
 
 from bot import Bot
-from config import ADMINS, FORCE_MSG, START_MSG, OWNER_ID, CUSTOM_CAPTION, DISABLE_CHANNEL_BUTTON, PROTECT_CONTENT
+from config import ADMINS, FORCE_MSG, START_MSG, CUSTOM_CAPTION, DISABLE_CHANNEL_BUTTON, PROTECT_CONTENT
 from helper_func import subscribed, encode, decode, get_messages
-from database.sql import add_user, query_msg, full_userbase
+from database.database import add_user, del_user, full_userbase, present_user
 
 
-#=====================================================================================##
-
-WAIT_MSG = """"<b>Processing ...</b>"""
-
-REPLY_ERROR = """<code>Use this command as a replay to any telegram message with out any spaces.</code>"""
-
-#=====================================================================================##
 
 
 @Bot.on_message(filters.command('start') & filters.private & subscribed)
 async def start_command(client: Client, message: Message):
     id = message.from_user.id
-    user_name = '@' + message.from_user.username if message.from_user.username else None
-    try:
-        await add_user(id, user_name)
-    except:
-        pass
+    if not await present_user(id):
+        try:
+            await add_user(id)
+        except:
+            pass
     text = message.text
     if len(text)>7:
         try:
@@ -110,6 +107,17 @@ async def start_command(client: Client, message: Message):
         )
         return
 
+    
+#=====================================================================================##
+
+WAIT_MSG = """"<b>Processing ...</b>"""
+
+REPLY_ERROR = """<code>Use this command as a replay to any telegram message with out any spaces.</code>"""
+
+#=====================================================================================##
+
+    
+    
 @Bot.on_message(filters.command('start') & filters.private)
 async def not_joined(client: Client, message: Message):
     buttons = [
@@ -153,7 +161,7 @@ async def get_users(client: Bot, message: Message):
 @Bot.on_message(filters.private & filters.command('broadcast') & filters.user(ADMINS))
 async def send_text(client: Bot, message: Message):
     if message.reply_to_message:
-        query = await query_msg()
+        query = await full_userbase()
         broadcast_msg = message.reply_to_message
         total = 0
         successful = 0
@@ -162,8 +170,7 @@ async def send_text(client: Bot, message: Message):
         unsuccessful = 0
         
         pls_wait = await message.reply("<i>Broadcasting Message.. This will Take Some Time</i>")
-        for row in query:
-            chat_id = int(row[0])
+        for chat_id in query:
             try:
                 await broadcast_msg.copy(chat_id)
                 successful += 1
@@ -172,8 +179,10 @@ async def send_text(client: Bot, message: Message):
                 await broadcast_msg.copy(chat_id)
                 successful += 1
             except UserIsBlocked:
+                await del_user(chat_id)
                 blocked += 1
             except InputUserDeactivated:
+                await del_user(chat_id)
                 deleted += 1
             except:
                 unsuccessful += 1
