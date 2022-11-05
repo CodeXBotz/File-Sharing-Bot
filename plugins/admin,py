@@ -3,7 +3,6 @@
 
 
 
-import asyncio
 from bot import Bot
 from config import ADMINS
 from pyrogram import filters, Client
