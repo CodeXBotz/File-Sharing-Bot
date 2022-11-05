@@ -1,7 +1,7 @@
 #(©)Codexbotz
 
 from aiohttp import web
-from web import web_server
+from plugins import web_server
 
 import pyromod.listen
 from pyrogram import Client
