@@ -29,6 +29,11 @@ I Guess This Will Be Usefull For Many People.....😇.
 ##
 
 **If you need any more modes in repo or If you find out any bugs, mention in [@codexbotzsupport ](https://www.telegram.dog/codexbotzsupport)**
+<a href="https://github.com/CodeXBotz/File-Sharing-Bot/blob/main/CONTRIBUTING.md">
+    &nbsp;<img src="https://forthebadge.com/images/badges/Contribute-msg.svg" width="130" height="18">&nbsp;
+  </a>
+
+
 
 ### Features
 - Fully customisable.
