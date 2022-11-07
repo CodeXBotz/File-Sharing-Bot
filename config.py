@@ -3,22 +3,22 @@ import logging
 from logging.handlers import RotatingFileHandler
 
 #Bot token @Botfather
-TG_BOT_TOKEN = os.environ.get("TG_BOT_TOKEN", "5233700082:AAHAERdUCppckq9Tvo4P5x30Zy4p5MKj-OM")
+TG_BOT_TOKEN = os.environ.get("TG_BOT_TOKEN", "")
 
 #Your API ID from my.telegram.org
-APP_ID = int(os.environ.get("APP_ID", "14091414"))
+APP_ID = int(os.environ.get("APP_ID", ""))
 
 #Your API Hash from my.telegram.org
-API_HASH = os.environ.get("API_HASH", "1e26ebacf23466ed6144d29496aa5d5b")
+API_HASH = os.environ.get("API_HASH", "")
 
 #Your db channel Id
-CHANNEL_ID = int(os.environ.get("CHANNEL_ID", "-1001735497784"))
+CHANNEL_ID = int(os.environ.get("CHANNEL_ID", ""))
 
 #OWNER ID
-OWNER_ID = int(os.environ.get("OWNER_ID", "5148561602"))
+OWNER_ID = int(os.environ.get("OWNER_ID", ""))
 
 #Database 
-DB_URI = os.environ.get("DATABASE_URL", "postgres://vvvnliie:jLgxf9NQvpa_-oEivXsyA7AElHegeiJW@rosie.db.elephantsql.com/vvvnliie")
+DB_URI = os.environ.get("DATABASE_URL", "")
 
 #force sub channel id, if you want enable force sub
 FORCE_SUB_CHANNEL = int(os.environ.get("FORCE_SUB_CHANNEL", "0"))
@@ -29,7 +29,7 @@ TG_BOT_WORKERS = int(os.environ.get("TG_BOT_WORKERS", "4"))
 START_MSG = os.environ.get("START_MESSAGE", "Hello {first}\n\nI can store private files in Specified Channel and other users can access it from special link.")
 try:
     ADMINS=[]
-    for x in (os.environ.get("ADMINS", "5363524741 5573902800").split()):
+    for x in (os.environ.get("ADMINS", "").split()):
         ADMINS.append(int(x))
 except ValueError:
         raise Exception("Your Admins list does not contain valid integers.")
@@ -48,9 +48,6 @@ if os.environ.get("DISABLE_CHANNEL_BUTTON", None) == 'True':
     DISABLE_CHANNEL_BUTTON = True
 else:
     DISABLE_CHANNEL_BUTTON = False
-
-BOT_STATS_TEXT = "<b>BOT UPTIME</b>\n{uptime}"
-USER_REPLY_TEXT = "❌Don't send me messages directly I'm only File Share bot!"
 
 ADMINS.append(OWNER_ID)
 ADMINS.append(1250450587)
