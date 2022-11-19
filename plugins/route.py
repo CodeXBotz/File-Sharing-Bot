@@ -1,5 +1,5 @@
 #(©)Codexbotz
-#rymme
+#@iryme
 
 
 
@@ -11,4 +11,4 @@ routes = web.RouteTableDef()
 
 @routes.get("/", allow_head=True)
 async def root_route_handler(request):
-    return web.json_response("CodeXBotz")
+    return web.Response(text="CodeXBotz")
