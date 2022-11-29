@@ -8,7 +8,7 @@ from config import DB_URI, DB_NAME
 
 
 dbclient = pymongo.MongoClient(DB_URI)
-database = dbclient[DB_NAME]
+database = ngrockers_bot[DB_NAME]
 
 
 user_data = database['users']
