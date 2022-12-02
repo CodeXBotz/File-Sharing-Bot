@@ -37,7 +37,7 @@ FORCE_SUB_CHANNEL = int(os.environ.get("FORCE_SUB_CHANNEL", "0"))
 TG_BOT_WORKERS = int(os.environ.get("TG_BOT_WORKERS", "4"))
 
 #start message
-START_MSG = os.environ.get("START_MESSAGE", "Hello {first} & Welcome To [TIF] Links Bot 📌Join our other Channels @TIF_TvSeries1 🌹 @TIF_WebSeries @TIF_Moviez 🌹 @TIF_Anime   📌Our Discussion Group  @TIFDiscuss 🌹 @TIF_OTs 🌹 @TIFRequests 📌Our Official Bot  @TIFManagerBot  📌Our Store  @TIF_Shoppie 🌹 @TIF_Vouches 📌 A new initiative by [TIF], We are now on ENEBA.COM as www.eneba.com/vendor/tif-gaming . 📌 Follow us on Instagram  https://instagram.com/tif_network?igshid=YmMyMTA2M2Y= ")
+START_MSG = os.environ.get("START_MESSAGE", "Hello {first} & Welcome To [TIF] Links Bot </b> 📌Join our other Channels </b> @TIF_TvSeries1 🌹 @TIF_WebSeries </b> @TIF_Moviez 🌹 @TIF_Anime </b>  📌Our Discussion Group </b>  @TIFDiscuss 🌹 @TIF_OTs 🌹 @TIFRequests </b> 📌Our Official Bot  @TIFManagerBot </b> 📌Our Store </b> @TIF_Shoppie 🌹 @TIF_Vouches </b> 📌 A new initiative by [TIF], We are now on ENEBA.COM as </b> www.eneba.com/vendor/tif-gaming . </b> 📌 Follow us on Instagram </b> https://instagram.com/tif_network?igshid=YmMyMTA2M2Y= ")
 try:
     ADMINS=[]
     for x in (os.environ.get("ADMINS", "").split()):
