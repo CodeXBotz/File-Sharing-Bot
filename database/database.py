@@ -17,10 +17,7 @@ user_data = database['users']
 
 async def present_user(user_id : int):
     found = user_data.find_one({'_id': user_id})
-    if found:
-        return True
-    else:
-        return False
+    return bool(found)
 
 async def add_user(user_id: int):
     user_data.insert_one({'_id': user_id})
