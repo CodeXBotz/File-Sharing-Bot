@@ -14,7 +14,7 @@ async def cb_handler(client: Bot, query: CallbackQuery):
 ╭━━━━━━━━━━━━━━━➣
 ┣⪼👑 Creator : <a href='tg://user?id={OWNER_ID}'>Pro Owner</a>
 ┣⪼👨‍💻 Language : <code>Python3</code>
-┣⪼✏️ Library : <a href='https://docs.pyrogram.org/'>Pyrogram asyncio {version}</a>
+┣⪼✏️ Library : <a href='https://docs.pyrogram.org/'>Pyrogram</a>
 ┣⪼🌀 Source Code : <a href='https://github.com/dor3Monbotz/crownFileShearBot'>Click here</a>
 ┣⪼📕 Channel : <a href= "https://t.me/Cinecoder">@Cinecoder</a>
 ╰━━━━━━━━━━━━━━━➣""",
