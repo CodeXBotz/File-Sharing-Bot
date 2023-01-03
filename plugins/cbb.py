@@ -10,7 +10,7 @@ async def cb_handler(client: Bot, query: CallbackQuery):
     data = query.data
     if data == "about":
         await query.message.edit_text(
-            text = f"""
+            text = f""" \n
 ╭━━━━━━━━━━━━━━━➣
 ┣⪼👑 Creator : <a href='tg://user?id={OWNER_ID}'>Pro Owner</a>
 ┣⪼👨‍💻 Language : <code>Python3</code>
