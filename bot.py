@@ -3,7 +3,7 @@
 from aiohttp import web
 from plugins import web_server
 
-import pyromod.listen
+import pyrogram
 from pyrogram import Client
 import sys
 from datetime import datetime
