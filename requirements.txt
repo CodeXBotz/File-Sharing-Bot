@@ -6,4 +6,7 @@ Pyromod
 pymongo
 dnspython
 # --- For-Web-Response ------- #
-aiohttp
+aiohttp==3.8.1
+Flask==2.2.2
+gunicorn==20.1.0
+
