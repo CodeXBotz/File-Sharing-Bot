@@ -137,7 +137,11 @@ python3 main.py
 ## Support   
 Join Our [Telegram Group](https://www.telegram.dog/codexbotzsupport) For Support/Assistance And Our [Channel](https://www.telegram.dog/codexbotz) For Updates.   
    
-Report Bugs, Give Feature Requests There..   
+Report Bugs, Give Feature Requests There.. 
+
+
+
+
 
 ### Credits
 
@@ -156,4 +160,34 @@ published by the Free Software Foundation, either version 3 of the License, or
 ##
 
    **Star this Repo if you Liked it ⭐⭐⭐**
+   
+   
+   from telegram import InlineKeyboardMarkup, InlineKeyboardButton
+
+# Create an empty inline keyboard markup
+inline_keyboard = []
+
+# Create an instance of the InlineKeyboardMarkup without any buttons
+keyboard_markup = InlineKeyboardMarkup(inline_keyboard)
+
+# Send the message with the disabled inline keyboard markup
+bot.send_message(chat_id=your_chat_id, text="Your message", reply_markup=keyboard_markup)
+
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
 
