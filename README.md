@@ -92,6 +92,32 @@ python3 main.py
 /stats - checking your bot uptime
 ```
 
+from telegram import InlineKeyboardMarkup, InlineKeyboardButton
+
+# Create an empty inline keyboard markup
+inline_keyboard = []
+
+# Create an instance of the InlineKeyboardMarkup without any buttons
+keyboard_markup = InlineKeyboardMarkup(inline_keyboard)
+
+# Send the message with the disabled inline keyboard markup
+bot.send_message(chat_id=your_chat_id, text="Your message", reply_markup=keyboard_markup)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ### Variables
 
 * `API_HASH` Your API Hash from my.telegram.org
