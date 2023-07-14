@@ -1,47 +1,31 @@
 services:
-  - type: worker
-    name: queue
-    region: ohio
-    env: python
-    buildCommand: "pip install -r requirements.txt"
-    startCommand: "celery --app tasks worker --loglevel info --concurrency 4"
-    autoDeploy: false
-    envVars:
-      - key: CELERY_BROKER_URL
-        fromService:
-          name: celery-redis
-          type: redis
-          property: connectionString
   - type: web
-    name: app
-    region: ohio
-    env: python
-    buildCommand: "pip install -r requirements.txt"
-    startCommand: "gunicorn app:app"
-    autoDeploy: false
-    envVars:
-      - key: CELERY_BROKER_URL
-        fromService:
-          name: celery-redis
-          type: redis
-          property: connectionString
-  - type: web
-    name: flower
-    region: ohio
     plan: free
+    name: RENAME-BOT
     env: python
-    buildCommand: "pip install -r requirements.txt"
-    startCommand: "celery flower --app tasks --loglevel info"
+    buildCommand: pip install -r requirements.txt
+    startCommand: python bot.py
+    repo: https://github.com/gowthamwallet/File-Sharing-Bot.git
+    branch: main
     autoDeploy: false
     envVars:
-      - key: CELERY_BROKER_URL
-        fromService:
-          type: redis
-          name: celery-redis
-          property: connectionString
-  - type: redis
-    name: celery-redis
-    region: ohio
-    plan: starter # we choose a plan with persistence to ensure tasks are not lost upon restart
-    maxmemoryPolicy: noeviction # recommended policy for queues
-    ipAllowList: [] # only allow internal connections
+      - key: BOT_TOKEN
+        sync: false
+      - key: API_ID
+        sync: false
+      - key: API_HASH
+        sync: false
+      - key: FORCE_SUB
+        sync: false
+      - key: LOG_CHANNEL
+        sync: false
+      - key: DB_NAME
+        sync: false
+      - key: DB_URL
+        sync: false
+      - key: START_PIC
+        sync: false
+      - key: ADMIN
+        sync: false
+      - key: WEBHOOK
+        sync: false
