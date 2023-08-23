@@ -1,22 +1,14 @@
-#(©)CodeXBotz
-
-
-
-
-import os
-import asyncio
+import os, random, asyncio
 from pyrogram import Client, filters, __version__
 from pyrogram.enums import ParseMode
-from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
+from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery, InputMediaAnimation, InputMediaVideo
 from pyrogram.errors import FloodWait, UserIsBlocked, InputUserDeactivated
 
 from bot import Bot
 from config import ADMINS, FORCE_MSG, START_MSG, CUSTOM_CAPTION, DISABLE_CHANNEL_BUTTON, PROTECT_CONTENT
 from helper_func import subscribed, encode, decode, get_messages
 from database.database import add_user, del_user, full_userbase, present_user
-
-
-
+from support import *
 
 @Bot.on_message(filters.command('start') & filters.private & subscribed)
 async def start_command(client: Client, message: Message):
@@ -83,6 +75,7 @@ async def start_command(client: Client, message: Message):
                 await msg.copy(chat_id=message.from_user.id, caption = caption, parse_mode = ParseMode.HTML, reply_markup = reply_markup, protect_content=PROTECT_CONTENT)
             except:
                 pass
+            #await delete_message_delayed(client, message, DDL)
         return
     else:
         reply_markup = InlineKeyboardMarkup(
@@ -93,8 +86,13 @@ async def start_command(client: Client, message: Message):
                 ]
             ]
         )
-        await message.reply_text(
-            text = START_MSG.format(
+        giphy = os.listdir('./support')
+        gifti = random.choice(giphy)
+        special = f'./support/{gifti}'
+        
+        await message.reply_video(
+            video = special,
+            caption = START_MSG.format(
                 first = message.from_user.first_name,
                 last = message.from_user.last_name,
                 username = None if not message.from_user.username else '@' + message.from_user.username,
@@ -102,8 +100,8 @@ async def start_command(client: Client, message: Message):
                 id = message.from_user.id
             ),
             reply_markup = reply_markup,
-            disable_web_page_preview = True,
-            quote = True
+            quote = True,
+            supports_streaming=True
         )
         return
 
@@ -116,15 +114,12 @@ REPLY_ERROR = """<code>Use this command as a replay to any telegram message with
 
 #=====================================================================================##
 
-    
-    
 @Bot.on_message(filters.command('start') & filters.private)
 async def not_joined(client: Client, message: Message):
     buttons = [
         [
-            InlineKeyboardButton(
-                "Join Channel",
-                url = client.invitelink)
+            InlineKeyboardButton("Join Channel", url=client.invitelink),
+            InlineKeyboardButton("Join Channel", url=client.invite)  # Add the link to the second channel here
         ]
     ]
     try:
@@ -139,8 +134,13 @@ async def not_joined(client: Client, message: Message):
     except IndexError:
         pass
 
-    await message.reply(
-        text = FORCE_MSG.format(
+    gify = os.listdir('./support')
+    gifti = random.choice(gify)
+    simple = f'./support/{gifti}'
+ 
+    await message.reply_video(
+        video = simple,
+        caption = FORCE_MSG.format(
                 first = message.from_user.first_name,
                 last = message.from_user.last_name,
                 username = None if not message.from_user.username else '@' + message.from_user.username,
@@ -149,7 +149,7 @@ async def not_joined(client: Client, message: Message):
             ),
         reply_markup = InlineKeyboardMarkup(buttons),
         quote = True,
-        disable_web_page_preview = True
+        supports_streaming=True
     )
 
 @Bot.on_message(filters.command('users') & filters.private & filters.user(ADMINS))
