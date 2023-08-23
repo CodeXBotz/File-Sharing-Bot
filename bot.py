@@ -9,7 +9,7 @@ from pyrogram.enums import ParseMode
 import sys
 from datetime import datetime
 
-from config import API_HASH, APP_ID, LOGGER, TG_BOT_TOKEN, TG_BOT_WORKERS, FORCE_SUB_CHANNEL, CHANNEL_ID, PORT
+from config import API_HASH, APP_ID, LOGGER, TG_BOT_TOKEN, TG_BOT_WORKERS, FORCE_SUB_CHANNEL, F_SUB, CHANNEL_ID, PORT
 
 class Bot(Client):
     def __init__(self):
@@ -41,6 +41,20 @@ class Bot(Client):
                 self.LOGGER(__name__).warning(a)
                 self.LOGGER(__name__).warning("Bot can't Export Invite link from Force Sub Channel!")
                 self.LOGGER(__name__).warning(f"Please Double check the FORCE_SUB_CHANNEL value and Make sure Bot is Admin in channel with Invite Users via Link Permission, Current Force Sub Channel Value: {FORCE_SUB_CHANNEL}")
+                self.LOGGER(__name__).info("\nBot Stopped. Join https://t.me/CodeXBotzSupport for support")
+                sys.exit()
+
+        if F_SUB:
+            try:
+                li = (await self.get_chat(F_SUB)).invite_link
+                if not li:
+                    await self.export_chat_invite_link(F_SUB)
+                    li = (await self.get_chat(F_SUB)).invite_link
+                self.invite = li
+            except Exception as a:
+                self.LOGGER(__name__).warning(a)
+                self.LOGGER(__name__).warning("Bot can't Export Invite link from Force Sub!")
+                self.LOGGER(__name__).warning(f"Please Double check the F_SUB value and Make sure Bot is Admin in channel with Invite Users via Link Permission, Current Force Sub Channel Value: {F_SUB}")
                 self.LOGGER(__name__).info("\nBot Stopped. Join https://t.me/CodeXBotzSupport for support")
                 sys.exit()
         try:
