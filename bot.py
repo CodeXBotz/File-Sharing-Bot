@@ -37,7 +37,7 @@ class Bot(Client):
     async def start(self):
         await super().start()
         usr_bot_me = await self.get_me()
-        self.uptime = datetime.now()
+        self.start_timestamp = datetime.now()
 
         if FORCE_SUB_CHANNEL:
             try:
