@@ -1,8 +1,11 @@
-FROM python:3.8-slim-buster
+FROM python:3.11-slim-bookworm
 WORKDIR /app
 
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+
 COPY requirements.txt requirements.txt
-RUN pip3 install -r requirements.txt
+RUN pip3 install --no-cache -r requirements.txt
 
 COPY . .
 
