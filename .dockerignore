@@ -1,0 +1,7 @@
+.venv
+.gitignore
+app.json
+.github
+CONTRIBUTING.md
+README.md
+Procfile
