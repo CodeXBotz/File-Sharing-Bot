@@ -5,26 +5,33 @@ import re
 import asyncio
 from pyrogram import filters
 from pyrogram.enums import ChatMemberStatus as status
-from pyrogram.types import Update
-from config import FORCE_SUB_CHANNEL, ADMINS
+from pyrogram.types import Message, Update
+from config import ADMINS
 from pyrogram.errors.exceptions.bad_request_400 import UserNotParticipant
 from pyrogram.errors import FloodWait
 
-async def is_subscribed(filter, client, update: Update) -> bool:
-    if not FORCE_SUB_CHANNEL:
+
+async def is_subscribed(client, user_id, channel):
+    try:
+        member = await client.get_chat_member(chat_id = channel, user_id = user_id)
+    except UserNotParticipant:
+        return False
+
+    return member.status in [status.OWNER, status.ADMINISTRATOR, status.MEMBER]
+
+
+# It'll probably make more sense to make filter by not_subscribed
+async def subscribed_filter(filter, client, update: Update) -> bool:
+    if not client.force_sub["active"]:
         return True
     user_id = update.from_user.id
     if user_id in ADMINS:
         return True
-    try:
-        member = await client.get_chat_member(chat_id = FORCE_SUB_CHANNEL, user_id = user_id)
-    except UserNotParticipant:
-        return False
+    
+    return all(is_subscribed(client, user_id, channel) for channel in client.force_sub["ids"])
 
-    if member.status in [status.OWNER, status.ADMINISTRATOR, status.MEMBER]:
-        return True
-    else:
-        return False
+subscribed = filters.create(subscribed_filter)
+
 
 async def encode(string: str) -> str:
     string_bytes = string.encode("ascii")
@@ -32,12 +39,14 @@ async def encode(string: str) -> str:
     base64_string = (base64_bytes.decode("ascii")).strip("=")
     return base64_string
 
+
 async def decode(base64_string: str) -> str:
     base64_string = base64_string.strip("=") # links generated before this commit will be having = sign, hence striping them to handle padding errors.
     base64_bytes = (base64_string + "=" * (-len(base64_string) % 4)).encode("ascii")
     string_bytes = base64.urlsafe_b64decode(base64_bytes) 
     string = string_bytes.decode("ascii")
     return string
+
 
 async def get_messages(client, message_ids):
     messages = []
@@ -61,7 +70,8 @@ async def get_messages(client, message_ids):
         messages.extend(msgs)
     return messages
 
-async def get_message_id(client, message):
+
+async def get_message_id(client, message: Message):
     if message.forward_from_chat:
         if message.forward_from_chat.id == client.db_channel.id:
             return message.forward_from_message_id
@@ -106,6 +116,3 @@ def get_readable_time(seconds: int) -> str: # Type is int, but function is calle
     time_list.reverse()
     up_time += ":".join(time_list)
     return up_time
-
-
-subscribed = filters.create(is_subscribed)

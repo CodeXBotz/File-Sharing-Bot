@@ -3,19 +3,19 @@
 
 
 
-import os
 import asyncio
-from pyrogram import Client, filters, __version__
-from pyrogram.enums import ParseMode
-from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
-from pyrogram.errors import FloodWait, UserIsBlocked, InputUserDeactivated
 
 from bot import Bot
-from config import ADMINS, FORCE_MSG, START_MSG, CUSTOM_CAPTION, DISABLE_CHANNEL_BUTTON, PROTECT_CONTENT
-from helper_func import subscribed, encode, decode, get_messages
+from config import (ADMINS, CUSTOM_CAPTION, DISABLE_CHANNEL_BUTTON, FORCE_MSG,
+                    PROTECT_CONTENT, START_MSG)
 from database.database import add_user, del_user, full_userbase, present_user
-
-
+from helper_func import decode, encode, get_messages, subscribed
+from pyrogram import Client, __version__, filters
+from pyrogram.enums import ParseMode
+from pyrogram.errors import FloodWait, InputUserDeactivated, UserIsBlocked
+from pyrogram.types import InlineKeyboardButton as Button
+from pyrogram.types import InlineKeyboardMarkup as Markup
+from pyrogram.types import Message
 
 
 @Bot.on_message(filters.command('start') & filters.private & subscribed)
@@ -64,11 +64,11 @@ async def start_command(client: Client, message: Message):
         await temp_msg.delete()
 
         for msg in messages:
+            
+            caption = "" if not msg.caption else msg.caption.html
 
             if bool(CUSTOM_CAPTION) & bool(msg.document):
-                caption = CUSTOM_CAPTION.format(previouscaption = "" if not msg.caption else msg.caption.html, filename = msg.document.file_name)
-            else:
-                caption = "" if not msg.caption else msg.caption.html
+                caption = CUSTOM_CAPTION.format(previouscaption = caption, filename = msg.document.file_name)
 
             if DISABLE_CHANNEL_BUTTON:
                 reply_markup = msg.reply_markup
@@ -85,11 +85,11 @@ async def start_command(client: Client, message: Message):
                 pass
         return
     else:
-        reply_markup = InlineKeyboardMarkup(
+        reply_markup = Markup(
             [
                 [
-                    InlineKeyboardButton("😊 About Me", callback_data = "about"),
-                    InlineKeyboardButton("🔒 Close", callback_data = "close")
+                    Button("😊 About Me", callback_data = "about"),
+                    Button("🔒 Close", callback_data = "close")
                 ]
             ]
         )
@@ -112,25 +112,25 @@ async def start_command(client: Client, message: Message):
 
 WAIT_MSG = """"<b>Processing ...</b>"""
 
-REPLY_ERROR = """<code>Use this command as a replay to any telegram message with out any spaces.</code>"""
+REPLY_ERROR = """<code>Use this command as a reply to any telegram message without any spaces.</code>"""
 
 #=====================================================================================##
 
     
     
 @Bot.on_message(filters.command('start') & filters.private)
-async def not_joined(client: Client, message: Message):
+async def not_joined(client: Client, message: Message):  
     buttons = [
         [
-            InlineKeyboardButton(
+            Button(
                 "Join Channel",
-                url = client.invitelink)
-        ]
+                url = url)
+        ] for url in client.force_sub["links"]
     ]
     try:
         buttons.append(
             [
-                InlineKeyboardButton(
+                Button(
                     text = 'Try Again',
                     url = f"https://t.me/{client.username}?start={message.command[1]}"
                 )
@@ -147,7 +147,7 @@ async def not_joined(client: Client, message: Message):
                 mention = message.from_user.mention,
                 id = message.from_user.id
             ),
-        reply_markup = InlineKeyboardMarkup(buttons),
+        reply_markup = Markup(buttons),
         quote = True,
         disable_web_page_preview = True
     )
