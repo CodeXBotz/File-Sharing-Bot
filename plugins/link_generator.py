@@ -15,12 +15,12 @@ async def reply_share_url(client: Client, string: str, message: Message) -> None
     await message.reply_text(f"<b>Here is your link</b>\n\n{link}", quote=True, reply_markup=reply_markup)
 
 
-async def recieve_forwarded_msg(client, message):
+async def recieve_forwarded_msg(client, message, text="the message"):
     while True:
         try:
-            message = await client.ask(text = "Forward the First Message from DB Channel (with Quotes)..\n\nor Send the DB Channel Post Link", chat_id = message.from_user.id, filters=(filters.forwarded | (filters.text & ~filters.forwarded)), timeout=60)
+            message = await client.ask(text = f"Forward {text} from DB Channel (with Quotes)..\n\nor Send the DB Channel Post Link", chat_id = message.from_user.id, filters=(filters.forwarded | (filters.text & ~filters.forwarded)), timeout=60)
         except:
-            return [None, None]
+            return None
         msg_id = await get_message_id(client, message)
         if msg_id:
             return message, msg_id
@@ -31,8 +31,8 @@ async def recieve_forwarded_msg(client, message):
 
 @Bot.on_message(filters.private & filters.user(ADMINS) & filters.command('batch'))
 async def batch(client: Client, message: Message):
-    first_message = recieve_forwarded_msg(client, message)
-    second_message = recieve_forwarded_msg(client, message)
+    first_message = recieve_forwarded_msg(client, message, "the first message")
+    second_message = recieve_forwarded_msg(client, message, "the second message")
     
     if None in [first_message, second_message]:
         return
