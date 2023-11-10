@@ -14,48 +14,48 @@
       "value": ""
     },
     "OWNER_ID": {
-      "description": "An integer of consisting of your owner ID",
+      "description": "Your (the owner's) telegram id",
       "value": "1250450587"
     },
     "APP_ID":{
-      "description": "your app id, take it from my.telegram.org",
+      "description": "Your app id, take it from my.telegram.org",
       "value": ""
     },
     "DATABASE_URL": {
-      "description": "Paste your mongo db url",
+      "description": "Your MongoDB url",
       "value": "url"
     },
     "DATABASE_NAME":{
-      "description": "Enter your DATABASE_NAME ",
-      "value": "filesharexbot"
+      "description": "Your DATABASE_NAME ",
+      "value": "filesharingbot"
     },
     "API_HASH":{
-      "description": "your api hash, take it from my.telegram.org",
+      "description": "Your api hash, take it from my.telegram.org",
       "value": ""
     },
     "CHANNEL_ID":{
-      "description": "make a channel (database channel), then make the bot as admin in channel, and it's id",
+      "description": "make a channel (database channel), then make the bot as admin in channel, and put it's id here",
       "value": "-100"
     },
     "FORCE_SUB_CHANNEL":{
-      "description": "id of the channel or group, if you want enable force sub feature else put 0",
+      "description": "id of the channel or group, if you want to enable force sub feature, else put 0",
       "value": "0"
     },
     "START_MESSAGE": {
       "description": "Optional: start message of bot, use HTML parsemode format",
-      "value": "Hello {first}\n\nI can store private files in Specified Channel and other users can access it from special link."
+      "value": "Hello {first}\n\nI can store private files in Specified Channel and other users can access it with a special link."
     },
     "FORCE_SUB_MESSAGE": {
       "description": "Optional: Force Sub message of bot, use HTML parsemode format",
-      "value": "Hello {first}\n\n<b>You need to join in my Channel/Group to use me\n\nKindly Please join Channel</b>"
+      "value": "Hello {first}\n\n<b>You'll need to join my Channel/Group to use me\n\nPlease kindly join the channel</b>"
     },
     "ADMINS": {
-      "description": "A space separated list of user_ids of Admins, they can only create links",
+      "description": "A space separated list of user_ids of Admins, only they can create links",
       "value": "",
       "required": false
     },
     "PROTECT_CONTENT": {
-      "description": "Protect contents from getting forwarded",
+      "description": "Protect contents from forwarding",
       "value": "False",
       "required": false
     }
