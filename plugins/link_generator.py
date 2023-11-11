@@ -9,8 +9,8 @@ from helper_func import encode, get_message_id
 # TODO: This could really use some proper error handling instead of bare-except, remaining boilerplate is because of it...
 
 async def reply_share_url(client: Client, string: str, message: Message) -> None:
-    base64_string = await encode(string)
-    link = f"https://t.me/{client.username}?start={base64_string}"
+    string = await encode(string)
+    link = f"https://t.me/{client.username}?start={string}"
     reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("🔁 Share URL", url=f'https://telegram.me/share/url?url={link}')]])
     await message.reply_text(f"<b>Here is your link</b>\n\n{link}", quote=True, reply_markup=reply_markup)
 

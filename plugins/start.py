@@ -29,10 +29,10 @@ async def start_command(client: Client, message: Message):
     text = message.text
     if len(text)>7:
         try:
-            base64_string = text.split(" ", 1)[1]
+            string = text.split(" ", 1)[1]
         except:
             return
-        string = await decode(base64_string)
+        string = await decode(string)
         argument = string.split("-")
         if len(argument) == 3:
             try:

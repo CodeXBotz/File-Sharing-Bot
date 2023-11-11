@@ -22,9 +22,8 @@ async def channel_post(client: Client, message: Message):
         await reply_text.edit_text("Something went Wrong..!")
         return
     converted_id = post_message.id * abs(client.db_channel.id)
-    string = f"get-{converted_id}"
-    base64_string = await encode(string)
-    link = f"https://t.me/{client.username}?start={base64_string}"
+    string = await encode(f"get-{converted_id}")
+    link = f"https://t.me/{client.username}?start={string}"
 
     reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("🔁 Share URL", url=f'https://telegram.me/share/url?url={link}')]])
 
@@ -40,9 +39,8 @@ async def new_post(client: Client, message: Message):
         return
 
     converted_id = message.id * abs(client.db_channel.id)
-    string = f"get-{converted_id}"
-    base64_string = await encode(string)
-    link = f"https://t.me/{client.username}?start={base64_string}"
+    string = await encode(f"get-{converted_id}")
+    link = f"https://t.me/{client.username}?start={string}"
     reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("🔁 Share URL", url=f'https://telegram.me/share/url?url={link}')]])
     try:
         await message.edit_reply_markup(reply_markup)
