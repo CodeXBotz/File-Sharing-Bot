@@ -15,7 +15,7 @@ async def channel_post(client: Client, message: Message):
     try:
         post_message = await message.copy(chat_id = client.db_channel.id, disable_notification=True)
     except FloodWait as e:
-        await asyncio.sleep(e.x)
+        await asyncio.sleep(e.value)
         post_message = await message.copy(chat_id = client.db_channel.id, disable_notification=True)
     except Exception as e:
         print(e)
@@ -31,7 +31,13 @@ async def channel_post(client: Client, message: Message):
     await reply_text.edit(f"<b>Here is your link</b>\n\n{link}", reply_markup=reply_markup, disable_web_page_preview = True)
 
     if not DISABLE_CHANNEL_BUTTON:
-        await post_message.edit_reply_markup(reply_markup)
+        try:
+            await post_message.edit_reply_markup(reply_markup)
+        except FloodWait as e:
+            await asyncio.sleep(e.value)
+            await post_message.edit_reply_markup(reply_markup)
+        except Exception:
+            pass
 
 @Bot.on_message(filters.channel & filters.incoming & filters.chat(CHANNEL_ID))
 async def new_post(client: Client, message: Message):
@@ -46,6 +52,8 @@ async def new_post(client: Client, message: Message):
     reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton("🔁 Share URL", url=f'https://telegram.me/share/url?url={link}')]])
     try:
         await message.edit_reply_markup(reply_markup)
-    except Exception as e:
-        print(e)
+    except FloodWait as e:
+        await asyncio.sleep(e.value)
+        await message.edit_reply_markup(reply_markup)
+    except Exception:
         pass
