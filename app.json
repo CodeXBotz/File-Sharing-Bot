@@ -62,6 +62,18 @@
       "description": "Protect contents from getting forwarded",
       "value": "False",
       "required": false
+    },
+    "AUTO_DELETE_TIME": {
+      "description": "Set the time in seconds for the automatic deletion of the file. Default is 0, meaning auto-deletion is disabled unless specified.",
+      "value": "0"
+    },
+    "AUTO_DELETE_MSG": {
+      "description": "The custom message shown to the user before the file is automatically deleted. You can include a countdown with {time}.",
+      "value": "This file will be automatically deleted in {time} seconds. Please ensure you have saved any necessary content before this time."
+    },
+    "AUTO_DEL_SUCCESS_MSG": {
+      "description": "The custom message shown to the user once the file is successfully deleted.",
+      "value": "Your file has been successfully deleted. Thank you for using our service. ✅"
     }
   },
   "buildpacks": [
