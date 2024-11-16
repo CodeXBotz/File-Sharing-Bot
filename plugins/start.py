@@ -70,7 +70,7 @@ async def start_command(client: Client, message: Message):
             else:
                 reply_markup = None
 
-            if AUTO_DELETE_TIME:
+            if AUTO_DELETE_TIME and AUTO_DELETE_TIME > 0:
                 track_msgs = []
 
                 try:
@@ -78,7 +78,7 @@ async def start_command(client: Client, message: Message):
                     track_msgs.append(copied_msg_for_deletion)
 
                 except FloodWait as e:
-                    await asyncio.sleep(e.x)
+                    await asyncio.sleep(e.value)
                     copied_msg_for_deletion = await msg.copy(chat_id=message.from_user.id, caption=caption, parse_mode=ParseMode.HTML, reply_markup=reply_markup, protect_content=PROTECT_CONTENT)
                     track_msgs.append(copied_msg_for_deletion)
 
@@ -94,7 +94,7 @@ async def start_command(client: Client, message: Message):
                     await msg.copy(chat_id=message.from_user.id, caption=caption, parse_mode=ParseMode.HTML, reply_markup=reply_markup, protect_content=PROTECT_CONTENT)
                     await asyncio.sleep(0.5)
                 except FloodWait as e:
-                    await asyncio.sleep(e.x)
+                    await asyncio.sleep(e.value)
                     await msg.copy(chat_id=message.from_user.id, caption=caption, parse_mode=ParseMode.HTML, reply_markup=reply_markup, protect_content=PROTECT_CONTENT)
                 except:
                     pass

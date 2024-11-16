@@ -3,11 +3,23 @@
 import base64
 import re
 import asyncio
+import logging 
 from pyrogram import filters
 from pyrogram.enums import ChatMemberStatus
 from config import FORCE_SUB_CHANNEL, ADMINS, AUTO_DELETE_TIME, AUTO_DEL_SUCCESS_MSG
 from pyrogram.errors.exceptions.bad_request_400 import UserNotParticipant
 from pyrogram.errors import FloodWait
+from datetime import datetime, timedelta
+from apscheduler.schedulers.background import BackgroundScheduler
+
+# Disable apscheduler logging 
+apscheduler_logger = logging.getLogger('apscheduler')
+apscheduler_logger.addHandler(logging.NullHandler())
+apscheduler_logger.propagate = False
+
+# Initialize background scheduler
+scheduler = BackgroundScheduler()
+
 
 async def is_subscribed(filter, client, update):
     if not FORCE_SUB_CHANNEL:
@@ -106,14 +118,16 @@ def get_readable_time(seconds: int) -> str:
     return up_time
 
 async def delete_file(message, client, process):
-    await asyncio.sleep(AUTO_DELETE_TIME)
     for msg in message:
         try:
-            await client.delete_messages(chat_id=msg.chat.id, message_ids=[msg.id])
+            scheduler.add_job(msg.delete, 'date', run_date=datetime.now() + timedelta(seconds=AUTO_DELETE_TIME))
         except Exception as e:
-            await asyncio.sleep(e.x)
+            await asyncio.sleep(e.value)
 
     await process.edit_text(AUTO_DEL_SUCCESS_MSG)
 
 
 subscribed = filters.create(is_subscribed)
+
+# start scheduler
+scheduler.start()
