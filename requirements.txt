@@ -1,5 +1,5 @@
 # --- For-Bot-Working --------- #
-pyrogram
+pyrofork==2.3.38
 TgCrypto
 pyromod==1.5
 # --- For-Database ------------ #
