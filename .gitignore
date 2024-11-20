@@ -140,3 +140,4 @@ cython_debug/
 .idea
 Bot.session
 filesharingbot.txt
+Bot.session-journal
