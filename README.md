@@ -26,20 +26,31 @@
 Telegram Bot to store Posts and Documents and it can Access by Special Links.
 I Guess This Will Be Usefull For Many People.....😇. 
 
-##
-
-**If you need any more modes in repo or If you find out any bugs, mention in [@codexbotzsupport ](https://www.telegram.dog/codexbotzsupport)**
-
-**Make sure to see [contributing.md](https://github.com/CodeXBotz/File-Sharing-Bot/blob/main/CONTRIBUTING.md) for instructions on contributing to the project!**
-
-
 
 ### Features
 - Fully customisable.
 - Customisable welcome & Forcesub messages.
 - More than one Posts in One Link.
 - Can be deployed on heroku directly.
+- Protect Content to Prevent Forwarding
+- Auto-Delete Files After a Configurable Time 
 
+## What’s Next
+
+These features are in the pipeline, and contributions from the community are welcome!
+
+- [ ] **Channel Join Request**  
+  Implement a feature that prompts users to join a specified Telegram channel before accessing the bot's functionalities.
+
+
+### How to Contribute
+1. Check the [contribution guidelines](https://github.com/CodeXBotz/File-Sharing-Bot/blob/main/CONTRIBUTING.md) for detailed instructions.  
+2. Pick any feature and create a new issue or comment on an existing one.  
+3. Discuss your implementation plan with maintainers to align your contributions with project goals.  
+
+We encourage all developers to contribute ideas, report bugs, and share improvements. Together, we can make this project even better! 🚀
+ 
+ 
 ### Setup
 
 - Add the bot to Database Channel with all permission
