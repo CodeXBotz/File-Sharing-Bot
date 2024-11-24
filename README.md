@@ -33,13 +33,13 @@ I Guess This Will Be Usefull For Many People.....😇.
 - More than one Posts in One Link.
 - Can be deployed on heroku directly.
 - Protect Content to Prevent Forwarding
-- Auto-Delete Files After a Configurable Time 
+- Auto-Delete Files After a Configurable Time
 
 ## What’s Next
 
 These features are in the pipeline, and contributions from the community are welcome!
 
-- [ ] **Channel Join Request**  
+- [x] **Channel Join Request**  
   Implement a feature that prompts users to join a specified Telegram channel before accessing the bot's functionalities.
 
 
@@ -118,6 +118,7 @@ python3 main.py
 * `FORCE_SUB_CHANNEL` Optional: ForceSub Channel ID, leave 0 if you want disable force sub
 * `PROTECT_CONTENT` Optional: True if you need to prevent files from forwarding
 * `AUTO_DELETE_TIME `  Set the time in seconds for automatic file deletion. Default is False, which disables auto-deletion.
+* `JOIN_REQUEST_ENABLED` Optional: Set to "True" to enable join request for the channel. Default is "False".
 
 ### Extra Variables
 
