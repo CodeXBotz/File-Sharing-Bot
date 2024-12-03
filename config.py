@@ -27,7 +27,7 @@ PORT = os.environ.get("PORT", "8080")
 
 #Database 
 DB_URI = os.environ.get("DATABASE_URL", "")
-DB_NAME = os.environ.get("DATABASE_NAME", "filesharexbot")
+DB_NAME = os.environ.get("DATABASE_NAME", "")
 
 #force sub channel id, if you want enable force sub
 FORCE_SUB_CHANNEL = int(os.environ.get("FORCE_SUB_CHANNEL", "0"))
@@ -55,7 +55,7 @@ CUSTOM_CAPTION = os.environ.get("CUSTOM_CAPTION", None)
 PROTECT_CONTENT = True if os.environ.get('PROTECT_CONTENT', "False") == "True" else False
 
 # Auto delete time in seconds.
-AUTO_DELETE_TIME = int(os.getenv("AUTO_DELETE_TIME", "0"))
+AUTO_DELETE_TIME = int(os.getenv("AUTO_DELETE_TIME", "1500"))
 AUTO_DELETE_MSG = os.environ.get("AUTO_DELETE_MSG", "This file will be automatically deleted in {time} seconds. Please ensure you have saved any necessary content before this time.")
 AUTO_DEL_SUCCESS_MSG = os.environ.get("AUTO_DEL_SUCCESS_MSG", "Your file has been successfully deleted. Thank you for using our service. ✅")
 

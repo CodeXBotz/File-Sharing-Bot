@@ -70,7 +70,7 @@ async def get_message_id(client, message):
     elif message.forward_sender_name:
         return 0
     elif message.text:
-        pattern = "https://t.me/(?:c/)?(.*)/(\d+)"
+        pattern = r"https://t.me/(?:c/)?(.*)/(\\d+)"
         matches = re.match(pattern,message.text)
         if not matches:
             return 0
